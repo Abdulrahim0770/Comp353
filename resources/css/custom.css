@@ -1,0 +1,160 @@
+@keyframes floatingDuck {
+     0% {
+         transform: translateY(-8px);
+    }
+     100% {
+         transform: translateY(60px);
+    }
+}
+ @-webkit-keyframes registerSlideWallpaper {
+     from {
+         background-position: 0 0;
+    }
+     to {
+         background-position: -400px 0;
+    }
+}
+ @keyframes movingWater {
+     0% {
+         transform: translateX(0) translateZ(0) scaleY(1)
+    }
+     50% {
+         transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+     100% {
+         transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+ @media only screen and (max-width: 767px) { /* Anything below an ipad */
+     .floatingDuck {
+         display: none !important;
+    }
+     .wave {
+         display: none !important;
+    }
+     #login .loginForm {
+         min-height: 450px !important;
+    }
+     .registrationForm {
+         margin-top: 0px !important;
+         margin-bottom: 0px !important;
+         padding-bottom: 70px !important;
+    }
+}
+/* Portrait iPad 1, 2, 3, 4, Mini, Air, and Pro 9.7"*/
+ @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+     #slogan {
+         padding-top: 320px !important;
+    }
+     #login .loginForm {
+         padding-top: 190px !important;
+    }
+}
+ html, body {
+     font-family: "Signika", sans-serif;
+     height: 100%;
+     margin: 0;
+}
+ .wrapper {
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+}
+ .content { /* TO BE CHECKED*/
+     flex: 1;
+     overflow: auto;
+}
+ ::-webkit-scrollbar {
+     width: 0px;
+     background: transparent;
+}
+ .form-signin {
+     margin-top: 50px;
+}
+ .loginForm {
+     background-color: transparent;
+     z-index: 4;
+}
+ .registrationForm {
+     background-color: rgb(255,255,255, 0.8);
+     margin-top: 50px;
+     margin-bottom: 50px;
+}
+ .lastLoggedIn{
+   margin-top: 8px;
+ }
+ .floatingDuck {
+     position: absolute;
+     bottom: 120px !important;
+     margin-left: 200px !important;
+     animation: floatingDuck 2s alternate ease-in-out infinite;
+     animation-name: floatingDuck;
+     animation-duration: 2s;
+     animation-timing-function: ease-in-out;
+     animation-delay: 0s;
+     animation-iteration-count: infinite;
+     animation-direction: alternate;
+     animation-fill-mode: none;
+     animation-play-state: running;
+     will-change: transform;
+     -webkit-user-select: none;
+     user-select: none;
+     width: 270px;
+     height: 270px;
+     z-index: 1;
+}
+ .animatedBg {
+     background: url(https://crc353.encs.concordia.ca/resources/images/annimation/wallpaper.png) repeat 0 0;
+     -webkit-animation: registerSlideWallpaper 60s linear infinite;
+}
+ .waveWrapper {
+     overflow: hidden;
+     position: absolute;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     top: 0;
+     margin: auto;
+}
+ .waveWrapperInner {
+     position: absolute;
+     width: 100%;
+     overflow: hidden;
+     height: 100%;
+     bottom: -1px;
+}
+ .bgMiddle {
+     z-index: 3;
+     opacity: 0.8;
+}
+ .bgBottom {
+     z-index: 2;
+     opacity: 0.6;
+}
+ .wave {
+     position: absolute;
+     left: 0;
+     width: 200%;
+     height: 100%;
+     background-repeat: repeat no-repeat;
+     background-position: 0 bottom;
+     transform-origin: center bottom;
+}
+ .waveMiddle {
+     background-size: 50% 275px;
+}
+ .waveAnimation .waveMiddle {
+     animation: movingWater 10s linear infinite;
+}
+ .waveBottom {
+     background-size: 50% 275px;
+}
+ .waveAnimation .waveBottom {
+     animation: movingWater 15s linear infinite;
+}
+ #slogan {
+     padding-top: 120px;
+}
+ #lightOrangeBg {
+     background-color: #fff9e6;
+}
