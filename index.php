@@ -1,4 +1,3 @@
-duh hello
 <html lang="en">
    <?php
       require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php'; //Getting the code from header.php file.
