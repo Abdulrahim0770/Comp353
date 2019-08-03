@@ -54,7 +54,7 @@
                </div>
                <div class="col-md-4 mid">
                   <form style="display: inline;" method="post" class="form-inline">
-                     <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Search Student By ID" aria-label="Search">
+                     <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Search By ID" aria-label="Search">
                      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
                   </form>
 <?php
