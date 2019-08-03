@@ -120,7 +120,7 @@
                               if(isset($_POST['search'])) {
                                   $search = $_POST['search'];
                               }
-                              $STH = $conn->query("SELECT * FROM Student " . (isset($search) ? "WHERE StudentID LIKE '%$search%'" : "")); //used for searching
+                              $STH = $conn->query("SELECT StudentID, firstName, lastName, SSN, dob, phone, email, address FROM Student " . (isset($search) ? "WHERE StudentID LIKE '%$search%'" : "")); //used for searching
                               echo '<table class="table table-bordered table-info table-striped table-hover text-center">';
                               $i = 0;
                               while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
