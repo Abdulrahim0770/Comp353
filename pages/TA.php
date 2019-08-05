@@ -10,7 +10,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
       <div class="container-fluid content">
         <?php
                  if(isset($_POST['saveEdit'])) { //Editing a Student
-                   $STH = $conn->prepare("UPDATE Instructor SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE InstructorID=?");
+                   $STH = $conn->prepare("UPDATE Student SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE StudentID=?");
                    $STH->bindParam(1, $_POST['firstName']);
                    $STH->bindParam(2, $_POST['lastName']);
                    $STH->bindParam(3, $_POST['SSN']);
@@ -22,11 +22,13 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    $STH->execute();
                  }
                  if(isset($_POST['delete'])) { //Delete a Student
-                   $STH = $conn->prepare("DELETE FROM Instructor WHERE InstructorID=$_POST[id]");
+                   $STH = $conn->prepare("DELETE FROM Student WHERE StudentID=$_POST[id]");
                    $STH->execute();
                  }
+
                  if(isset($_POST['add'])) { //Insert a Student
-                   $STH = $conn->prepare("INSERT INTO Instructor (firstName, lastName, dob, address, phone, email, SSN) Values (?,?,?,?,?,?,?)");
+                   $STH = $conn->prepare("INSERT INTO Student (firstName, lastName, dob, address, phone, email, SSN) Values (?,?,?,?,?,?,?)");
+
                    $STH->bindParam(1, $_POST['firstName']);
                    $STH->bindParam(2, $_POST['lastName']);
                    $STH->bindParam(3, $_POST['dob']);
@@ -34,6 +36,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    $STH->bindParam(5, $_POST['phone']);
                    $STH->bindParam(6, $_POST['email']);
                    $STH->bindParam(7, $_POST['SSN']);
+                   $STH->execute();
+                   $STH = $conn->prepare("INSERT INTO Graduate (StudentID) Values (LAST_INSERT_ID())");
                    $STH->execute();
                  }
         ?>
@@ -50,10 +54,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                </br></br>
                <div class="row">
                 <div class="col-md-4 mid">
-                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNewInstructor">Add a new Faculty</button>
+                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNewTA">Add a new TA</button>
                 </div>
                 <div class="col-md-4 mid">
-                   <a class="btn btn-info disabled" href="https://crc353.encs.concordia.ca/assets/print.php?table=Instructor">Print - Not a Priority</a>
+                   <a class="btn btn-info disabled" href="https://crc353.encs.concordia.ca/assets/print.php?table=Student">Print - Not a Priority</a>
                 </div>
                 <div class="col-md-4 mid">
                    <form style="display: inline;" method="post" class="form-inline">
@@ -70,16 +74,16 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                 </div>
               </div>
              </div></br>
-             <h3 align="center">Faculty Informations</h3>
+             <h3 align="center">TA Informations</h3>
              <div class="container-fluid content">
                <div class="row">
                 <div class="content">
              <?php
                       if(isset($_POST['editUser'])) {
-                       $STH = $conn->query("SELECT * FROM Instructor WHERE InstructorID=$_POST[id]");
+                       $STH = $conn->query("SELECT * FROM Student WHERE StudentID=$_POST[id]");
                        $row = $STH->fetch();
              ?>
-                       <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="insertingInstructor" aria-hidden="true">
+                       <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="insertingTA" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                              <div class="modal-content">
                                 <div class="modal-header text-center">
@@ -124,7 +128,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                                    $search = $_POST['search'];
                                }
                                $STH = $conn->
-                               query("SELECT InstructorID AS 'Instructor ID', firstName AS 'First Name', lastName AS 'Last Name', SSN, dob AS 'Date Of Birth', phone AS 'Phone', email AS 'Email', address AS 'Address', hasFunding AS 'Funding' FROM Instructor " .(isset($search) ? "WHERE InstructorID LIKE '$search'" : "")); //used for searching
+                               query("SELECT Student.StudentID AS 'Student ID', firstName AS 'First Name', lastName AS 'Last Name', SSN, dob AS 'Date of Birth', phone AS 'Phone', email AS 'Email', address AS 'Address' FROM Student inner join Graduate on Graduate.StudentID = Student.StudentID " .(isset($search) ? "WHERE Student.StudentID LIKE '$search'" : "")); //used for searching
                                echo '<table class="table table-bordered table-info table-striped table-hover text-center">';
                                $i = 0;
                                while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
@@ -145,13 +149,13 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
              ?>
                                    <td>
                                       <form method="post">
-                                         <input type="hidden" name="id" value="<?= $row['InstructorID'] ?>">
+                                         <input type="hidden" name="id" value="<?= $row['StudentID'] ?>">
                                          <input type="submit" class="btn btn-info" value="Edit" name="editUser">
                                       </form>
                                    </td>
                                    <td>
                                       <form method="post" onsubmit="return validate(this);">
-                                         <input type="hidden" name="id" value="<?= $row['InstructorID'] ?>">
+                                         <input type="hidden" name="id" value="<?= $row['StudentID'] ?>">
                                          <input type="submit" class="btn btn-danger" value="Delete" name="delete">
                                       </form>
                                    </td>
@@ -162,11 +166,11 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
              ?>
                    </div>
                 </div>
-                <div class="modal fade" id="addNewInstructor" tabindex="-1" role="dialog" aria-labelledby="insertingInstructor" aria-hidden="true">
+                <div class="modal fade" id="addNewTA" tabindex="-1" role="dialog" aria-labelledby="insertingTA" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                          <div class="modal-header text-center">
-                            <h5 class="modal-title">Insert Instructor</h5>
+                            <h5 class="modal-title">Insert TA</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>

@@ -6,6 +6,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';  //Getting the code fr
 
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
+
+
+
+
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -31,6 +35,93 @@ if (isset($_POST['login'])) {
         exit;
       }
 }
-//last statement of the code which is to close the database.
+
+if(isset($_POST['listOfCampus'])){
+      $STH = $conn->query("SELECT CampusName AS 'Campus Name' FROM Campus"); //used for searching  ?>
+<div class="panel-body">
+<div class="modal fade" id="listOfCampus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">List of Campus</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <?php
+      echo '<table class="table table-bordered  table-striped table-hover text-center">';
+      $i = 0;
+      while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
+          if ($i == 0) {
+            $i++;
+            echo "<tr>";
+            foreach ($row as $key => $value) {
+              echo "<th>" . $key . "</th>";
+            }
+            echo "</tr>";
+          }
+          echo "<tr>";
+          foreach ($row as $value) {
+            echo "<td>" . $value . "</td>";
+          }
+        echo "</tr>";
+      }
+      echo "</table>";
+?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <script>
+  $(function() {
+    $("#listOfCampus").modal();
+  });
+  </script>
+<?php
+}
+
+if(isset($_POST['listOfBuildings'])){
+  $STH = $conn->query("SELECT CampusID, CampusName FROM Campus"); //used for searching  ?>
+<div class="panel-body">
+<div class="modal fade" id="listOfCampus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalCenterTitle">List of Campus</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+<?php
+    if(isset($_POST['submit'])) { //Insert a Student
+      echo "hello world";
+      ?>
+      <scrip>
+        window.location.href = "http://www.google.ca";
+      </script>
+      <?php
+    }
+    ?>
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+$(function() {
+$("#listOfCampus").modal();
+});
+</script>
+<?php
+}
   $conn = null;
 ?>
