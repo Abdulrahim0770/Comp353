@@ -124,7 +124,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                                    $search = $_POST['search'];
                                }
                                $STH = $conn->
-                               query("SELECT InstructorID, firstName, lastName, SSN, dob, phone, email, address, hasFunding FROM Instructor " .(isset($search) ? "WHERE InstructorID LIKE '%$search%'" : "")); //used for searching
+                               query("SELECT InstructorID, RoomsID, AwardID, PublicationID, ExperienceID, firstName, lastName, SSN, dob, phone, email, address, hasFunding FROM Instructor " .(isset($search) ? "WHERE InstructorID LIKE '%$search%'" : "")); //used for searching
                                echo '<table class="table table-bordered table-info table-striped table-hover text-center">';
                                $i = 0;
                                while($row = $STH->fetch(PDO::FETCH_ASSOC)) {

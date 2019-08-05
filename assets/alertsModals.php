@@ -60,7 +60,7 @@
    //Alert related to index page
    if (basename($_SERVER['PHP_SELF'], '.php') == "index") {
        if ($_GET['Alert'] == 'credentialError') {
-           echo alert('error', 'Credentials', 'Please verify Username and Password.');
+           echo alert('error', 'Credentials', 'Please verify your Username and Password.');
        }
    }
 
