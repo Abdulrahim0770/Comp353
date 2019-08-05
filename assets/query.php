@@ -98,25 +98,6 @@ if(isset($_POST['listOfBuildings'])){
     </button>
   </div>
   <div class="modal-body">
-
-<form  method="post">
-    <label for="sel1">Choose a Campus</label>
-      <select class="form-control" name="submit">
-<?php
-      while($row = $STH->fetch()) {?>
-        <option value= "<?php echo $row['CampusID'] ?>"><?php echo $row['CampusName'] ?></option>
-<?php
-}?>
-      </select>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" data-dismiss="modal" name="submit">Submit</button>
-    </div>
-</form>
-
-
-
-
-
 <?php
     if(isset($_POST['submit'])) { //Insert a Student
       echo "hello world";

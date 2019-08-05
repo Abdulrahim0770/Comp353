@@ -24,9 +24,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
                 <button class="btn btn-lg btn-danger btn-block" type="submit" name="listOfCampus">List of All Campuses</button>
                 <button class="btn btn-lg btn-warning btn-block" type="submit" name="listOfBuildings" >List of Buildings given a campus</button>
 
-
-
-
                 <button class="btn btn-lg btn-info btn-block disabled" name="">Building Information given a building</button>
                 <button class="btn btn-lg btn-dark btn-block disabled" name="">List of Programs given a department</button>
                 <button class="btn btn-lg btn-primary btn-block disabled" name="">List of courses given a term and program</button>
