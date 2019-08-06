@@ -7,14 +7,15 @@
    <body id="lightOrangeBg">
 <?php
          if(isset($_POST['saveEdit'])) { //Editing a Student
-           $STH = $conn->prepare("UPDATE Student SET firstName=?, lastName=?, dob=?, address=?, email=?, phone=? WHERE StudentID=?");
+           $STH = $conn->prepare("UPDATE Student SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE StudentID=?");
            $STH->bindParam(1, $_POST['firstName']);
            $STH->bindParam(2, $_POST['lastName']);
-           $STH->bindParam(3, $_POST['dob']);
-           $STH->bindParam(4, $_POST['address']);
-           $STH->bindParam(5, $_POST['email']);
-           $STH->bindParam(6, $_POST['phone']);
-           $STH->bindParam(7, $_POST['id']);
+           $STH->bindParam(3, $_POST['SSN']);
+           $STH->bindParam(4, $_POST['dob']);
+           $STH->bindParam(5, $_POST['address']);
+           $STH->bindParam(6, $_POST['email']);
+           $STH->bindParam(7, $_POST['phone']);
+           $STH->bindParam(8, $_POST['id']);
            $STH->execute();
          }
          if(isset($_POST['delete'])) { //Delete a Student
@@ -22,13 +23,14 @@
            $STH->execute();
          }
          if(isset($_POST['add'])) { //Insert a Student
-           $STH = $conn->prepare("INSERT INTO Student (firstName, lastName, dob, address, phone, email) Values (?,?,?,?,?,?)");
+           $STH = $conn->prepare("INSERT INTO Student (firstName, lastName, dob, address, phone, email, SSN) Values (?,?,?,?,?,?,?)");
            $STH->bindParam(1, $_POST['firstName']);
            $STH->bindParam(2, $_POST['lastName']);
            $STH->bindParam(3, $_POST['dob']);
            $STH->bindParam(4, $_POST['address']);
            $STH->bindParam(5, $_POST['phone']);
            $STH->bindParam(6, $_POST['email']);
+           $STH->bindParam(7, $_POST['SSN']);
            $STH->execute();
          }
 ?>
@@ -52,7 +54,7 @@
                </div>
                <div class="col-md-4 mid">
                   <form style="display: inline;" method="post" class="form-inline">
-                     <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Search Student By ID" aria-label="Search">
+                     <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Search By ID" aria-label="Search">
                      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
                   </form>
 <?php
@@ -89,6 +91,7 @@
 <?php
                                       formGroup("fa-user", "firstName", "First Name", "text", $row["firstName"]);
                                       formGroup("fa-user", "lastName", "Last Name", "text", $row["lastName"]);
+                                      formGroup("fa-id-card", "SSN", "Social Security Number", "text", $row["SSN"]);
                                       formGroup("fa-birthday-cake", "dob", "Date Of Birth", "date", $row["dob"]);
                                       formGroup("fa-map-marked-alt", "address", "Address", "text", $row["address"]);
                                       formGroup("fa-phone prefix", "phone", "Phone", "text", $row["phone"]);
@@ -117,7 +120,7 @@
                               if(isset($_POST['search'])) {
                                   $search = $_POST['search'];
                               }
-                              $STH = $conn->query("SELECT * FROM Student " . (isset($search) ? "WHERE StudentID LIKE '%$search%'" : "")); //used for searching
+                              $STH = $conn->query("SELECT StudentID AS 'Student ID', firstName AS 'First Name', lastName AS 'Last Name', SSN, dob AS 'Date of Birth', phone AS 'Phone', email AS 'Email', address AS 'Address' FROM Student " . (isset($search) ? "WHERE StudentID LIKE '$search'" : "")); //used for searching
                               echo '<table class="table table-bordered table-info table-striped table-hover text-center">';
                               $i = 0;
                               while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
@@ -138,13 +141,13 @@
 ?>
                                   <td>
                                      <form method="post">
-                                        <input type="hidden" name="id" value="<?= $row['StudentID'] ?>">
+                                        <input type="hidden" name="id" value="<?=  $row['Student ID'] ?>">
                                         <input type="submit" class="btn btn-info" value="Edit" name="editUser">
                                      </form>
                                   </td>
                                   <td>
                                      <form method="post" onsubmit="return validate(this);">
-                                        <input type="hidden" name="id" value="<?= $row['StudentID'] ?>">
+                                        <input type="hidden" name="id" value="<?= $row['Student ID'] ?>">
                                         <input type="submit" class="btn btn-danger" value="Delete" name="delete">
                                      </form>
                                   </td>
@@ -170,6 +173,7 @@
 <?php
                              formGroup("fa-user", "firstName", "First Name", "text", "");
                              formGroup("fa-user", "lastName", "Last Name", "text", "");
+                             formGroup("fa-id-card", "SSN", "Social Security Number", "text", "");
                              formGroup("fa-birthday-cake", "dob", "Date Of Birth", "date", "");
                              formGroup("fa-map-marked-alt", "address", "Address", "text", "");
                              formGroup("fa-phone prefix", "phone", "Phone", "text", "");
