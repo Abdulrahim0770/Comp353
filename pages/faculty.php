@@ -145,13 +145,13 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
              ?>
                                    <td>
                                       <form method="post">
-                                         <input type="hidden" name="id" value="<?= $row['InstructorID'] ?>">
+                                         <input type="hidden" name="id" value="<?= $row['Instructor ID'] ?>">
                                          <input type="submit" class="btn btn-info" value="Edit" name="editUser">
                                       </form>
                                    </td>
                                    <td>
                                       <form method="post" onsubmit="return validate(this);">
-                                         <input type="hidden" name="id" value="<?= $row['InstructorID'] ?>">
+                                         <input type="hidden" name="id" value="<?= $row['Instructor ID'] ?>">
                                          <input type="submit" class="btn btn-danger" value="Delete" name="delete">
                                       </form>
                                    </td>

@@ -3,7 +3,6 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
 
-
 ?>
 <html lang="en">
    <body id="lightOrangeBg">
@@ -23,11 +22,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
                 <a class="btn btn-lg btn-success btn-block" href="https://crc353.encs.concordia.ca/pages/TA.php">Teaching Assitance Modification</a>
                 <button class="btn btn-lg btn-danger btn-block" type="submit" name="listOfCampus">List of All Campuses</button>
                 <button class="btn btn-lg btn-warning btn-block" type="submit" name="listOfBuildings" >List of Buildings given a campus</button>
+                <button class="btn btn-lg btn-info btn-block" name="DetailListOfBuildings">Building Information given a building</button>
 
-
-
-
-                <button class="btn btn-lg btn-info btn-block disabled" name="">Building Information given a building</button>
                 <button class="btn btn-lg btn-dark btn-block disabled" name="">List of Programs given a department</button>
                 <button class="btn btn-lg btn-primary btn-block disabled" name="">List of courses given a term and program</button>
                 <button class="btn btn-lg btn-secondary btn-block disabled" name="">List of courses given a term and department</button>
