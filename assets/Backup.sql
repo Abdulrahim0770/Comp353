@@ -475,10 +475,10 @@ CREATE TABLE `Funds` (
   `ThesisGraduateID` int(11) NOT NULL,
   `amount` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`FundsID`),
-  KEY `TermID` (`TermID`),
-  KEY `ThesisGraduateID` (`ThesisGraduateID`),
-  CONSTRAINT `Funds_ibfk_1` FOREIGN KEY (`TermID`) REFERENCES `Term` (`TermID`),
-  CONSTRAINT `Funds_ibfk_2` FOREIGN KEY (`ThesisGraduateID`) REFERENCES `ThesisGraduate` (`ThesisGraduateID`)
+  KEY `Funds_ibfk_1` (`TermID`),
+  KEY `Funds_ibfk_2` (`ThesisGraduateID`),
+  CONSTRAINT `Funds_ibfk_1` FOREIGN KEY (`TermID`) REFERENCES `Term` (`TermID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Funds_ibfk_2` FOREIGN KEY (`ThesisGraduateID`) REFERENCES `ThesisGraduate` (`ThesisGraduateID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -488,7 +488,7 @@ CREATE TABLE `Funds` (
 
 LOCK TABLES `Funds` WRITE;
 /*!40000 ALTER TABLE `Funds` DISABLE KEYS */;
-INSERT INTO `Funds` VALUES (1,6,6,5000.00),(2,7,11,1000.00),(3,6,12,3000.00),(4,8,13,4000.00),(5,5,15,100.00),(6,4,16,1000.00),(7,3,20,6000.00),(8,2,21,10000.00),(9,1,22,2000.00),(10,5,27,5000.00),(11,6,29,5000.00),(12,7,30,3000.00);
+INSERT INTO `Funds` VALUES (1,6,6,5000.00),(2,7,11,1000.00),(4,8,13,4000.00),(5,5,15,100.00),(6,4,16,1000.00),(7,3,20,6000.00),(8,2,21,10000.00),(9,1,22,2000.00),(10,5,27,5000.00),(11,6,29,5000.00),(12,7,30,3000.00);
 /*!40000 ALTER TABLE `Funds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -535,17 +535,17 @@ CREATE TABLE `Graduate` (
   `PublicationID` int(11) DEFAULT NULL,
   `ContractID` int(11) DEFAULT NULL,
   PRIMARY KEY (`GraduateID`),
-  KEY `Graduate_ibfk_1` (`StudentID`),
   KEY `Degree_ibfk_1_idx` (`DegreeID`),
   KEY `Award_ibfk_1_idx` (`AwardID`),
   KEY `Publication_ibfk_1_idx` (`PublicationID`),
   KEY `Contract_fk_1_idx` (`ContractID`),
+  KEY `Graduate_ibfk_1` (`StudentID`),
   CONSTRAINT `Award_fk_1` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Contract_fk_1` FOREIGN KEY (`ContractID`) REFERENCES `Contract` (`ContractID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Degree_fk_1` FOREIGN KEY (`DegreeID`) REFERENCES `Degree` (`DegreeID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Graduate_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `Student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Publication_fk_1` FOREIGN KEY (`PublicationID`) REFERENCES `Publication` (`PublicationID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -554,7 +554,7 @@ CREATE TABLE `Graduate` (
 
 LOCK TABLES `Graduate` WRITE;
 /*!40000 ALTER TABLE `Graduate` DISABLE KEYS */;
-INSERT INTO `Graduate` VALUES (6,1000006,NULL,1,2,12),(7,1000007,NULL,2,1,13),(9,1000009,NULL,1,3,14),(11,1000023,NULL,3,4,15),(12,1000024,NULL,4,5,16),(13,1000025,NULL,5,6,17),(14,1000026,NULL,1,7,18),(15,1000027,NULL,3,10,19),(16,1000028,NULL,5,9,20),(17,1000029,NULL,2,8,21);
+INSERT INTO `Graduate` VALUES (6,1000006,NULL,1,2,12),(7,1000007,NULL,2,1,13),(9,1000009,NULL,1,3,14),(11,1000023,NULL,3,4,15),(13,1000025,NULL,5,6,17),(14,1000026,NULL,1,7,18),(15,1000027,NULL,3,10,19),(16,1000028,NULL,5,9,20),(17,1000029,NULL,2,8,21),(19,1000058,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Graduate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -873,7 +873,7 @@ CREATE TABLE `Student` (
   `email` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`StudentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000058 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1000059 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -882,7 +882,7 @@ CREATE TABLE `Student` (
 
 LOCK TABLES `Student` WRITE;
 /*!40000 ALTER TABLE `Student` DISABLE KEYS */;
-INSERT INTO `Student` VALUES (1000006,'Neeham','Titlemans','123 456 789','2019-08-01','514-333-9999','jaketitle@gmail.com','15 Dragon Street'),(1000007,'Dirk','Gently','159 753 123','1998-05-22','514-200-5322','dirkgently@gmail.com','100 Victoria Street'),(1000009,'Tevonn','Walker','987 159 321','1998-07-06','514-111-1124','twalker@gmail.com','734 Jasmine Street'),(1000011,'Tom','Goodman','738 072 784','1994-12-02','450-666-7896','goodmanflies@gmail.com','833 Dragon Ave'),(1000012,'Jonathan','Willis','576 656 805','1992-06-09','450-357-9510','jwill5@gmail.com','52-12 Romand Avenue'),(1000013,'Michael','Scott','613 561 539','1997-02-22','514-112-7536','Dundermifflin@email.com','115 Office Avenue'),(1000014,'Phyllis','Williams','737 480 426','1994-12-02','514-654-3214','cuteywill@gmail.com','1125 Office Avenue'),(1000015,'Scott','Wetland','335 200 119','1995-10-31','514-654-3217','watlandamiright@gmail.com','963 Wattka st'),(1000016,'Manilla','Louzon','779 821 214','1996-04-16','438-626-1234','manillathebest@gmail.com','1156 Hollywood Av'),(1000017,'Electra','Goodwill','268 023 702','1999-06-04','514-467-5556','elec75@msn.com','139 Brookhill Street'),(1000018,'Mario','Plumberman','775 863 087','1999-06-15','438-115-3339','drmario@hotmail.com','111 Mushroomking Ave'),(1000019,'Luigi','Plumberman','605 093 160','1992-10-06','438-119-4445','luigidabest@gmail.com','121 Mushroomking Ave'),(1000020,'Ash','Ketchum','201 977 295','1993-01-04','514-987-6543','pikapika1@gmail.com','665 Pallet Ave'),(1000021,'Gary','Blue','446 004 061','1993-03-27','514-334-3344','ratawata@yahoo.com','676 Pallet Ave'),(1000022,'Britney','Whitemen','736 499 229','1990-08-10','514-555-1475','foreveryoung@msn.com','558 Wallet St'),(1000023,'Suzanne','Baker','501 114 649','1989-04-20','450-726-4747','mjorplf9r7@thrubay.com','373  rue des Eglises Est'),(1000024,'Arnita','Evans','710 322 520','1996-10-10','514-290-1812','7qtnabhot8l@claimab.com','429  Papineau Avenue'),(1000025,'Leonard','Johnson','327 998 209','1996-02-17','514-376-8344','6r239febnn6@iffymedia.com','6817 43 Av'),(1000026,'Derrick','Penman','006 541 312','1997-12-17','514-970-8739','eixx4c5blv@fakemailgenerator.net','2896  rue Levy'),(1000027,'Betsy','Troy','443 774 179','1993-11-25','519-885-3625','735cjwms0ov@thrubay.com','3617  Albert Street'),(1000028,'Christine','Jones','734 415 987','1996-07-16','807-353-3592','b10uxrmzhse@iffymedia.com','1070  Nelson Street'),(1000029,'Frank','Pitts','271 892 028','1990-05-19','604-992-4191','u3kz1uzwkpe@payspun.com','1598  Robson St'),(1000030,'Stephen','Buchanan','525 709 747','1990-11-14','250-647-2592','ldkjyfm4bqi@claimab.com','4546  Ganges Road'),(1000031,'Marilyn','Henderson','043 906 130','1992-01-08','416-471-7720','d5tdy9dwnjw@fakemailgenerator.net','3825  Yonge Street'),(1000032,'Scott','Jarboe','127 664 274','1993-11-17','604-268-4317','mvp3bx96uya@iffymedia.com','1521  Hammarskjold Dr'),(1000033,'Donald','Cruz','005 149 828','1995-09-03','403-749-9054','aonxg16s00d@thrubay.com','4079  Port Washington Road'),(1000034,'Roger','White','716 735 402','1990-04-20','519-245-1310','sgayjpm78bk@fakemailgenerator.net','1414  Scotchmere Dr'),(1000035,'Chantel','Mueller','726 519 861','1994-05-08','416-764-9643','mzr64xpuy3h@fakemailgenerator.net','1384  Queen Elizabeth Boulevard'),(1000036,'Charles','Hirano','726 519 861','1998-03-10','613-761-4344','cv36ry3zylt@fakemailgenerator.net','686  Carling Avenue'),(1000037,'Teddy','Kan','270 972 094','1995-09-30','416-861-5829','zvfwg8dw4ar@payspun.com','289  Adelaide St'),(1000039,'John','Stanley','710 202 219','1991-04-24','604-341-0581','z54sn8pjsy@claimab.com','4907  James Street'),(1000040,'Phyllis','Thrailkill','580 316 719','1991-10-25','519-350-9777','rmietznxkyl@claimab.com','502  Scotchmere Dr'),(1000041,'Gisela','Carmichael','332 220 987','1999-03-30','905-238-6366','tyotqfb4jgg@thrubay.com','2568  Wellington Street'),(1000042,'Monica','Knight','090 975 947','1992-10-21','613-797-9273','laxth66twb@fakemailgenerator.net','2255  Carling Avenue'),(1000045,'Dj','Khalid','159 054 055','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000046,'Dj','Khalid','119 473 486','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000047,'Dj','Khalid','233 881 259','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000048,'Dj','Khalid','011 780 764','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000049,'Dj','Khalid','595 698 150','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000050,'Dj','Khalid','005 192 117','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000051,'Dj','Khalid','085 143 659','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000055,'Nicholas','Bergeron','058 318 247','1993-06-11','514-123-4567','nicho@gmail.com','Avenue Essential'),(1000057,'Jameson','Bond','5551234567','1988-08-01','5145551489','mrbond@gmail.com','1715 Dragon Street');
+INSERT INTO `Student` VALUES (1000006,'Neeham','Titlemans','123 456 789','2019-08-01','514-333-9999','jaketitle@gmail.com','15 Dragon Streets'),(1000007,'Dirk','Gently','159 753 123','1998-05-22','514-200-5322','dirkgently@gmail.com','100 Victoria Street'),(1000009,'Tevonn','Walker','987 159 321','1998-07-06','514-111-1124','twalker@gmail.com','734 Jasmine Street'),(1000011,'Tom','Goodman','738 072 784','1994-12-02','450-666-7896','goodmanflies@gmail.com','833 Dragon Ave'),(1000012,'Jonathan','Willis','576 656 805','1992-06-09','450-357-9510','jwill5@gmail.com','52-12 Romand Avenue'),(1000013,'Michael','Scott','613 561 539','1997-02-22','514-112-7536','Dundermifflin@email.com','115 Office Avenue'),(1000014,'Phyllis','Williams','737 480 426','1994-12-02','514-654-3214','cuteywill@gmail.com','1125 Office Avenue'),(1000015,'Scott','Wetland','335 200 119','1995-10-31','514-654-3217','watlandamiright@gmail.com','963 Wattka st'),(1000016,'Manilla','Louzon','779 821 214','1996-04-16','438-626-1234','manillathebest@gmail.com','1156 Hollywood Av'),(1000017,'Electra','Goodwill','268 023 702','1999-06-04','514-467-5556','elec75@msn.com','139 Brookhill Street'),(1000018,'Mario','Plumberman','775 863 087','1999-06-15','438-115-3339','drmario@hotmail.com','111 Mushroomking Ave'),(1000019,'Luigi','Plumberman','605 093 160','1992-10-06','438-119-4445','luigidabest@gmail.com','121 Mushroomking Ave'),(1000020,'Ash','Ketchum','201 977 295','1993-01-04','514-987-6543','pikapika1@gmail.com','665 Pallet Ave'),(1000021,'Gary','Blue','446 004 061','1993-03-27','514-334-3344','ratawata@yahoo.com','676 Pallet Ave'),(1000022,'Britney','Whitemen','736 499 229','1990-08-10','514-555-1475','foreveryoung@msn.com','558 Wallet St'),(1000023,'Suzanne','Baker','501 114 649','1989-04-20','450-726-4747','mjorplf9r7@thrubay.com','373  rue des Eglises Est'),(1000025,'Leonard','Johnson','327 998 209','1996-02-17','514-376-8344','6r239febnn6@iffymedia.com','6817 43 Av'),(1000026,'Derrick','Penman','006 541 312','1997-12-17','514-970-8739','eixx4c5blv@fakemailgenerator.net','2896  rue Levy'),(1000027,'Betsys','Troy','443 774 179','1993-11-25','519-885-3625','735cjwms0ov@thrubay.com','3617  Albert Street'),(1000028,'Christine','Jones','734 415 987','1996-07-16','807-353-3592','b10uxrmzhse@iffymedia.com','1070  Nelson Street'),(1000029,'Frank','Pitts','271 892 028','1990-05-19','604-992-4191','u3kz1uzwkpe@payspun.com','1598  Robson St'),(1000030,'Stephen','Buchanan','525 709 747','1990-11-14','250-647-2592','ldkjyfm4bqi@claimab.com','4546  Ganges Road'),(1000031,'Marilyn','Henderson','043 906 130','1992-01-08','416-471-7720','d5tdy9dwnjw@fakemailgenerator.net','3825  Yonge Street'),(1000032,'Scott','Jarboe','127 664 274','1993-11-17','604-268-4317','mvp3bx96uya@iffymedia.com','1521  Hammarskjold Dr'),(1000033,'Donald','Cruz','005 149 828','1995-09-03','403-749-9054','aonxg16s00d@thrubay.com','4079  Port Washington Road'),(1000034,'Roger','White','716 735 402','1990-04-20','519-245-1310','sgayjpm78bk@fakemailgenerator.net','1414  Scotchmere Dr'),(1000035,'Chantel','Mueller','726 519 861','1994-05-08','416-764-9643','mzr64xpuy3h@fakemailgenerator.net','1384  Queen Elizabeth Boulevard'),(1000036,'Charles','Hirano','726 519 861','1998-03-10','613-761-4344','cv36ry3zylt@fakemailgenerator.net','686  Carling Avenue'),(1000037,'Teddy','Kan','270 972 094','1995-09-30','416-861-5829','zvfwg8dw4ar@payspun.com','289  Adelaide St'),(1000039,'John','Stanley','710 202 219','1991-04-24','604-341-0581','z54sn8pjsy@claimab.com','4907  James Street'),(1000040,'Phyllis','Thrailkill','580 316 719','1991-10-25','519-350-9777','rmietznxkyl@claimab.com','502  Scotchmere Dr'),(1000041,'Gisela','Carmichael','332 220 987','1999-03-30','905-238-6366','tyotqfb4jgg@thrubay.com','2568  Wellington Street'),(1000042,'Monica','Knight','090 975 947','1992-10-21','613-797-9273','laxth66twb@fakemailgenerator.net','2255  Carling Avenue'),(1000045,'Dj','Khalid','159 054 055','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000046,'Dj','Khalid','119 473 486','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000047,'Dj','Khalid','233 881 259','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000048,'Dj','Khalid','011 780 764','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000049,'Dj','Khalid','595 698 150','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000050,'Dj','Khalid','005 192 117','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000051,'Dj','Khalid','085 143 659','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000055,'Nicholas','Bergeron','058 318 247','1993-06-11','514-123-4567','nicho@gmail.com','Avenue Essential'),(1000057,'Jameson','Bond','5551234567','1988-08-01','5145551489','mrbond@gmail.com','1715 Dragon Street'),(1000058,'Thuyohn','Thurai','123 546 789 ','1993-09-05','514-989-3232','thuyohn@gmail.com','456 maisonneuve');
 /*!40000 ALTER TABLE `Student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -994,7 +994,7 @@ CREATE TABLE `ThesisGraduate` (
 
 LOCK TABLES `ThesisGraduate` WRITE;
 /*!40000 ALTER TABLE `ThesisGraduate` DISABLE KEYS */;
-INSERT INTO `ThesisGraduate` VALUES (6,8,'Yes',1000006),(7,7,'No',1000007),(9,5,'No',1000009),(11,4,'Yes',1000023),(12,4,'Yes',1000024),(13,4,'Yes',1000025),(14,4,'No',1000026),(15,4,'Yes',1000027),(16,4,'Yes',1000036),(17,4,'No',1000040),(18,4,'No',1000042),(19,4,'No',1000033),(20,4,'Yes',1000032),(21,4,'Yes',1000029),(22,4,'Yes',1000031),(23,4,'No',1000041),(24,4,'No',1000034),(26,4,'No',1000039),(27,4,'Yes',1000037),(28,4,'No',1000028),(29,4,'Yes',1000030),(30,4,'Yes',1000035);
+INSERT INTO `ThesisGraduate` VALUES (6,8,'Yes',1000006),(7,7,'No',1000007),(9,5,'No',1000009),(11,4,'Yes',1000023),(13,4,'Yes',1000025),(14,4,'No',1000026),(15,4,'Yes',1000027),(16,4,'Yes',1000036),(17,4,'No',1000040),(18,4,'No',1000042),(19,4,'No',1000033),(20,4,'Yes',1000032),(21,4,'Yes',1000029),(22,4,'Yes',1000031),(23,4,'No',1000041),(24,4,'No',1000034),(26,4,'No',1000039),(27,4,'Yes',1000037),(28,4,'No',1000028),(29,4,'Yes',1000030),(30,4,'Yes',1000035);
 /*!40000 ALTER TABLE `ThesisGraduate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1086,4 +1086,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-05  9:27:45
+-- Dump completed on 2019-08-06 18:29:59
