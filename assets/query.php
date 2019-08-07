@@ -668,7 +668,7 @@
    }
 
    if(isset($_POST['ButtonSix'])) {
-   $STH = $conn->query("SELECT s.StudentID AS 'Student ID', s.firstName AS 'First Name', s.lastName AS 'Last Name', ses.session AS 'Session', t.year AS 'Year'
+   $STH = $conn->query("SELECT s.StudentID AS 'Student ID', s.firstName AS 'First Name', s.lastName AS 'Last Name'
           FROM Student s, EnrollsIN e, Term t, Session ses
           WHERE s.StudentID = e.StudentID AND e.TermID = t.TermID AND t.SessionID = ses.SessionID AND e.ProgramID = '".$_POST['sendingProgramID']."' AND ses.sessionID = '".$_POST['sendingSessionID']."' AND t.year = '".$_POST['sendingYear']."'
           ORDER BY s.StudentID ASC");
@@ -758,7 +758,7 @@
                      }
 ?>
                   </select>
-                  <label for="sel1"><br>Choose a Program</label>
+                  <label for="sel1"><br>Choose a Course</label>
                   <select class="form-control" name="sendingCourseID">
 <?php
                      while($row = $STHTHREE->fetch()) {
@@ -784,7 +784,7 @@
    }
 
    if(isset($_POST['ButtonSeven'])) {
-   $STH = $conn->query("SELECT Concat(i.firstName,' ',i.lastName) AS 'Professor', c.name AS 'Course Name', t.year AS 'Year', ses.session AS 'Session'
+   $STH = $conn->query("SELECT Concat(i.firstName,' ',i.lastName) AS 'Professor'
                         FROM Instructor i, Section s, Term t, Course c, Session ses
                         WHERE i.InstructorID = s.InstructorID AND s.CourseID = c.CourseID AND s.TermID=t.TermID AND t.SessionID = ses.SessionID
                         AND c.CourseID = '".$_POST['sendingCourseID']."' AND t.year = '".$_POST['sendingYear']."' AND ses.sessionID = '".$_POST['sendingSessionID']."'");
@@ -980,7 +980,7 @@
    }
 
    if(isset($_POST['ButtonNine'])) {
-     $STH = $conn->query("SELECT CONCAT(a.firstName,' ', a.lastName) AS 'Advisor Name', p.programName AS 'Program Name', d.departmentName  AS 'Department Name'
+     $STH = $conn->query("SELECT CONCAT(a.firstName,' ', a.lastName) AS 'Advisor Name'
                           FROM Advisor a, Program p, Department d
                           WHERE a.ProgramID = p.ProgramID AND p.DepartmentID = d.DepartmentID
                           AND d.departmentID = '".$_POST['sendingDepartmentID']."'");
@@ -1362,7 +1362,7 @@
 <?php
    }
 
-   //********** List of course offered by deparment and its chairman **********//
+   //********** Total Number of Course Offered Per Department and its Chairman **********//
    if(isset($_POST['listCourseDepartChairman'])){
    $STH = $conn->query("SELECT DISTINCT d.departmentName AS 'Department Name', COUNT(d.departmentName) AS 'Courses Offered', Concat(i.firstName,' ', i.lastName) AS 'Chairman'
                         FROM Department d, Course c, Chairman ch, Instructor i
@@ -1850,6 +1850,7 @@
    if(isset($_POST['ButtonSixteen'])) {
    $STH = $conn->query("SELECT StudentID, firstName, lastName, SSN, dob, phone, email, address FROM Student WHERE StudentID = '".$_POST['sendingUserID']."'");
                        $row = $STH->fetch();
+  $STHOne = $conn->query("SELECT degreeName FROM Degree WHERE StudentID = '".$_POST['sendingUserID']."'");
                        $STH = $conn->query("SELECT c.name AS 'Course Name', g.gradeLetter AS 'Grade'
                                             FROM Student s, Course c, Registration r, Section sc, Grade g
                                             WHERE s.StudentID = r.StudentID AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND g.RegistrationID = r.RegistrationID AND s.StudentID = '".$_POST['sendingUserID']."'");
@@ -1876,6 +1877,11 @@
                   echo "<b>Phone: </b>".$row['phone']."</br>";
                   echo "<b>Email: </b>".$row['email']."</br>";
                   echo "<b>Address: </b>".$row['address']."</br>";
+                  echo "<b>Academic History: </b>";
+                  while($rowOne = $STHOne->fetch(PDO::FETCH_ASSOC)) {
+                    echo $rowOne['degreeName'] . ", ";
+                  }
+                  echo "</br>";
                 }
                   echo '<table class="table table-bordered  table-striped table-hover text-center">';
                   $i = 0;

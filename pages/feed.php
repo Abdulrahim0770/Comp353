@@ -10,8 +10,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
         <div class="row">
         <div class="col-md-4 mid"></div>
          <div class="col-md-4 mid">
-               <h2 class="display-4">PRESS THE BUTTON </h2>
-                  <p style="font-size:100px">&#129325;</p>
+               <h2 class="display-4">PRESS ANY BUTTONS </h2>
+                  <span style="font-size:100px">&#128036;</span>
+                  <span style="font-size:60px">&#128168;</span>
+                  <p>
                   <div class="spinner-grow text-muted"></div>
                   <div class="spinner-grow text-primary"></div>
                   <div class="spinner-grow text-success"></div>
@@ -21,6 +23,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
                   <div class="spinner-grow text-secondary"></div>
                   <div class="spinner-grow text-dark"></div>
                   <div class="spinner-grow text-light"></div>
+                </p>
           </div>
           <div class="col-md-4 mid"></div>
         </div>
@@ -56,7 +59,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
          <div class="col-md-4 mid">
               <form method="post">
                  <button class="btn btn-lg btn-primary btn-block" name="listGraduateFundTerm">List of graduates funds given term</button>
-                 <button class="btn btn-lg btn-secondary btn-block" name="listCourseDepartChairman">List of course offered by department and its chairman</button>
+                 <button class="btn btn-lg btn-secondary btn-block" name="listCourseDepartChairman">Total Number of Course Offered Per Department and its Chairman</button>
                  <button class="btn btn-lg btn-success btn-block" name="totalStudentProgram">Total number of students in each program</button>
                  <button class="btn btn-lg btn-danger btn-block" name="listCourseStudentTerm">List of courses given student and term</button>
                  <button class="btn btn-lg btn-warning btn-block" disabled>Register student in a course - Confused!</button>
