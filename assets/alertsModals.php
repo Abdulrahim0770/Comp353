@@ -1,6 +1,5 @@
 <?php
    function alert($type, $title, $msg) { //Takes the type alert, the title and the text to display as the alert for Modals.
-
    $currentURL = 'https://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; //The current URL of the page.
    $modifyURL = modify_url($currentURL, 'Alert'); //Modify the URL to remove the Alert parameter (This URL will be called when Alert is closed).
 
@@ -62,11 +61,6 @@
        if ($_GET['Alert'] == 'credentialError') {
            echo alert('error', 'Credentials', 'Please verify your Username and Password.');
        }
-   }
-
-   //Alert related to feed page
-   if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
-
    }
 
    //Modifying URL for when the Alert is closed to remove the alert paramter from it.
