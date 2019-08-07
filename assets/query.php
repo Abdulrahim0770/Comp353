@@ -221,8 +221,9 @@
    if(isset($_POST['ButtonTwo'])) {
    $STH = $conn->query("SELECT DISTINCT BuildingName, BuildingAddress, totalFloors FROM Building WHERE BuildingID = '".$_POST['sendingBuildingID']."'");
                        $row = $STH->fetch();
-                       $STH = $conn->query("SELECT RoomNumber AS 'Room Number', floorLevel AS 'Floor Level',  (SELECT Count(floorLevel) FROM Rooms r, Building b WHERE r.BuildingID = b.BuildingID AND b.BuildingID = '".$_POST['sendingBuildingID']."') AS 'Total Rooms on Floor', RoomCapacity AS 'Room Capacity', RoomType AS 'Room Type', FacilitiesAvailable AS 'Facilities Available'
-                       FROM Building b, Rooms r LEFT JOIN Facilities f ON r.RoomsID = f.RoomsID WHERE b.BuildingID = r.BuildingID AND b.BuildingID = '".$_POST['sendingBuildingID']."'");
+                       $STH = $conn->query("SELECT r.floorLevel AS 'Floor Level', COUNT(*) AS 'Rooms on Floor', r.RoomNumber AS 'Room Number',  r.RoomCapacity AS 'Room Capacity', r.RoomType AS 'Room Type', f.FacilitiesAvailable AS 'Facilities Available'
+                                            FROM Building b, Rooms r LEFT JOIN Facilities f ON r.RoomsID = f.RoomsID
+                                            WHERE r.BuildingID = b.BuildingID AND b.BuildingID = '".$_POST['sendingBuildingID']."' GROUP BY r.floorLevel;");
    $result = 0;
 ?>
 <div class="panel-body">
@@ -882,7 +883,7 @@
    }
 
    if(isset($_POST['ButtonEight'])) {
-     $STH = $conn->query("SELECT Concat(i.firstName,' ',i.lastName) AS 'Supervisor', d.departmentName AS 'Department'
+     $STH = $conn->query("SELECT DISTINCT Concat(i.firstName,' ',i.lastName) AS 'Supervisor', d.departmentName AS 'Department'
                           FROM ThesisGraduate tg, Instructor i, Student s, Department d
                           WHERE s.StudentID = tg.StudentID AND tg.InstructorID = i.InstructorID  AND i.InstructorID = d.InstructorID
                           AND d.DepartmentID = '".$_POST['sendingDepartmentID']."'");
