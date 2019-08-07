@@ -7,7 +7,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
 ?>
 <html lang="en">
    <body id="faculty">
-      <div class="container-fluid content">
         <?php
                  if(isset($_POST['saveEdit'])) { //Editing a Student
                    $STH = $conn->prepare("UPDATE Instructor SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE InstructorID=?");
@@ -194,7 +193,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                 </div>
              </div>
              </div>
-      </div>
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?> <!-- Getting the code from footer.php file. -->
    </body>
 </html>
