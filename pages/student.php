@@ -63,9 +63,7 @@
                <div class="col-md-4 mid">
                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNewStudent">Add a new Student</button>
                </div>
-               <div class="col-md-4 mid">
-                  <a class="btn btn-info disabled" href="https://crc353.encs.concordia.ca/assets/print.php?table=Student">Print - Not a Priority</a>
-               </div>
+               <div class="col-md-4 mid"></div>
                <div class="col-md-4 mid">
                   <form style="display: inline;" method="post" class="form-inline">
                      <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Search By ID" aria-label="Search">
