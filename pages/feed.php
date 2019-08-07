@@ -51,8 +51,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
                 <button class="btn btn-lg btn-warning btn-block" name="listSuperDepartment">List of supervisors given a department</button>
                 <button class="btn btn-lg btn-info btn-block" name="listAdvisorDepartment">List of advisors given a department</button>
                 <button class="btn btn-lg btn-dark btn-block" name="listGraduateSuper">List of graduates given supervisor name</button>
-                <button class="btn btn-lg btn-block" style="background-color:Violet !important;" disabled>List of graduates assignment given term and course - No Query?</button>
-                ^-- Need Explanation (Team Help)
+                <button class="btn btn-lg btn-block" style="background-color:Violet !important;" name="listGraduateTermCourse">List of graduates assignment given term and course</button>
             <br>
               </form>
          </div>
@@ -63,8 +62,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
                  <button class="btn btn-lg btn-success btn-block" name="totalStudentProgram">Total number of students in each program</button>
                  <button class="btn btn-lg btn-danger btn-block" name="listCourseStudentTerm">List of courses given student and term</button>
                  <button class="btn btn-lg btn-warning btn-block" name="registerStudentCourse">Register student in a course</button>
-                 <button class="btn btn-lg btn-info btn-block" disabled>Drop a course for a student - Confused!</button>
-                 ^-- Need Explanation (Team Help)
+                 <button class="btn btn-lg btn-info btn-block" name="dropCourseStudent">Drop a course for a student</button>
                  <button class="btn btn-lg btn-dark btn-block" name="detailStudent">Detail report given a student</button>
             <br>
                </form>
