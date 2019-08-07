@@ -758,7 +758,7 @@
                      }
 ?>
                   </select>
-                  <label for="sel1"><br>Choose a Program</label>
+                  <label for="sel1"><br>Choose a Course</label>
                   <select class="form-control" name="sendingCourseID">
 <?php
                      while($row = $STHTHREE->fetch()) {
@@ -784,7 +784,7 @@
    }
 
    if(isset($_POST['ButtonSeven'])) {
-   $STH = $conn->query("SELECT Concat(i.firstName,' ',i.lastName) AS 'Professor', c.name AS 'Course Name', t.year AS 'Year', ses.session AS 'Session'
+   $STH = $conn->query("SELECT Concat(i.firstName,' ',i.lastName) AS 'Professor'
                         FROM Instructor i, Section s, Term t, Course c, Session ses
                         WHERE i.InstructorID = s.InstructorID AND s.CourseID = c.CourseID AND s.TermID=t.TermID AND t.SessionID = ses.SessionID
                         AND c.CourseID = '".$_POST['sendingCourseID']."' AND t.year = '".$_POST['sendingYear']."' AND ses.sessionID = '".$_POST['sendingSessionID']."'");
