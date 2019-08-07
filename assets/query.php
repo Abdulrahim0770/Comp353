@@ -980,7 +980,7 @@
    }
 
    if(isset($_POST['ButtonNine'])) {
-     $STH = $conn->query("SELECT CONCAT(a.firstName,' ', a.lastName) AS 'Advisor Name', p.programName AS 'Program Name', d.departmentName  AS 'Department Name'
+     $STH = $conn->query("SELECT CONCAT(a.firstName,' ', a.lastName) AS 'Advisor Name'
                           FROM Advisor a, Program p, Department d
                           WHERE a.ProgramID = p.ProgramID AND p.DepartmentID = d.DepartmentID
                           AND d.departmentID = '".$_POST['sendingDepartmentID']."'");
