@@ -77,7 +77,7 @@
                       $row = $STH->fetch();
 ?>
                       <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="insertingStudent" aria-hidden="true">
-                         <div class="modal-dialog modal-dialog-centered" role="document">
+                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
                                <div class="modal-header text-center">
                                   <h5 class="modal-title">Edit Student</h5>
@@ -159,7 +159,7 @@
                   </div>
                </div>
                <div class="modal fade" id="addNewStudent" tabindex="-1" role="dialog" aria-labelledby="insertingStudent" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                      <div class="modal-content">
                         <div class="modal-header text-center">
                            <h5 class="modal-title">Insert Student</h5>

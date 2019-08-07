@@ -7,7 +7,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
 ?>
 <html lang="en">
    <body id="faculty">
-      <div class="container-fluid content">
         <?php
                  if(isset($_POST['saveEdit'])) { //Editing a Student
                    $STH = $conn->prepare("UPDATE Instructor SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE InstructorID=?");
@@ -80,7 +79,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                        $row = $STH->fetch();
              ?>
                        <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="insertingInstructor" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                              <div class="modal-content">
                                 <div class="modal-header text-center">
                                    <h5 class="modal-title">Edit Student</h5>
@@ -163,7 +162,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    </div>
                 </div>
                 <div class="modal fade" id="addNewInstructor" tabindex="-1" role="dialog" aria-labelledby="insertingInstructor" aria-hidden="true">
-                   <div class="modal-dialog modal-dialog-centered" role="document">
+                   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                       <div class="modal-content">
                          <div class="modal-header text-center">
                             <h5 class="modal-title">Insert Instructor</h5>
@@ -194,7 +193,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                 </div>
              </div>
              </div>
-      </div>
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?> <!-- Getting the code from footer.php file. -->
    </body>
 </html>
