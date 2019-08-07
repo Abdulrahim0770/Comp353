@@ -30,14 +30,17 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
                 <button class="btn btn-lg btn-info btn-block" name="listAdvisorDepartment">List of advisors given a department</button>
                 <button class="btn btn-lg btn-dark btn-block" name="listGraduateSuper">List of graduates given supervisor name</button>
                 <button class="btn btn-lg btn-primary btn-block" disabled>List of graduates assignment given term and course - No Query?</button>
+                ^-- Need Explanation (Team Help)
                 <button class="btn btn-lg btn-secondary btn-block" name="listGraduateFundTerm">List of graduates funds given term</button>
                 <button class="btn btn-lg btn-success btn-block" name="listCourseDepartChairman">List of course offered by deparment and its chairman</button>
                 <button class="btn btn-lg btn-danger btn-block" name="totalStudentProgram">Total number of students in each program</button>
                 <button class="btn btn-lg btn-warning btn-block" name="listCourseStudentTerm">List of courses given student and term</button>
-                <button class="btn btn-lg btn-info btn-block disabled" name="">Register student in a course</button>
-                <button class="btn btn-lg btn-dark btn-block disabled" name="">Drop a course for a student</button>
-                <button class="btn btn-lg btn-primary btn-block disabled" name="">Detail report given a student</button>
-            <br>                
+                <button class="btn btn-lg btn-info btn-block" disabled>Register student in a course - Confused!</button>
+                ^-- Need Explanation (Team Help)
+                <button class="btn btn-lg btn-dark btn-block" disabled>Drop a course for a student - Confused!</button>
+                ^-- Need Explanation (Team Help)
+                <button class="btn btn-lg btn-primary btn-block" name="detailStudent">Detail report given a student</button>
+            <br>
               </form>
          </div>
          <div class="col-md-4 mid"></div>

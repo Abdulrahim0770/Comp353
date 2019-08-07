@@ -80,7 +80,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                        $row = $STH->fetch();
              ?>
                        <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="insertingInstructor" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                              <div class="modal-content">
                                 <div class="modal-header text-center">
                                    <h5 class="modal-title">Edit Student</h5>
@@ -163,7 +163,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    </div>
                 </div>
                 <div class="modal fade" id="addNewInstructor" tabindex="-1" role="dialog" aria-labelledby="insertingInstructor" aria-hidden="true">
-                   <div class="modal-dialog modal-dialog-centered" role="document">
+                   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                       <div class="modal-content">
                          <div class="modal-header text-center">
                             <h5 class="modal-title">Insert Instructor</h5>

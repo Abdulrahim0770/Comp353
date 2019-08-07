@@ -34,7 +34,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Campus</h5>
@@ -88,7 +88,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Campus</h5>
@@ -129,7 +129,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Building </h5>
@@ -183,7 +183,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Building</h5>
@@ -237,9 +237,11 @@
             </div>
             <div class="modal-body">
 <?php
+                 if($row) {
                   echo "Building Name: ".$row['BuildingName']."</br>";
                   echo "Building Address: ".$row['BuildingAddress']."</br>";
                   echo "Total Floor: ".$row['totalFloors']."</br>";
+                }
                   echo '<table class="table table-bordered  table-striped table-hover text-center">';
                   $i = 0;
                   while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
@@ -284,7 +286,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Department</h5>
@@ -381,7 +383,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Department</h5>
@@ -496,7 +498,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Department</h5>
@@ -614,7 +616,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Student Enrolled</h5>
@@ -730,7 +732,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Student Enrolled</h5>
@@ -844,7 +846,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Department</h5>
@@ -888,7 +890,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Building </h5>
@@ -942,7 +944,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Department</h5>
@@ -986,7 +988,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Building </h5>
@@ -1040,7 +1042,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Professor</h5>
@@ -1084,7 +1086,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Graduate Student</h5>
@@ -1140,7 +1142,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Student Enrolled</h5>
@@ -1255,7 +1257,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Student Enrolled</h5>
@@ -1370,7 +1372,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Campus</h5>
@@ -1428,7 +1430,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Campus</h5>
@@ -1483,7 +1485,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Student Enrolled</h5>
@@ -1549,6 +1551,332 @@
             </div>
             <div class="modal-body">
 <?php
+                  echo '<table class="table table-bordered  table-striped table-hover text-center">';
+                  $i = 0;
+                  while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
+                    $result = 1;
+                      if ($i == 0) {
+                        $i++;
+                        echo "<tr>";
+                        foreach ($row as $key => $value) {
+                          echo "<th>" . $key . "</th>";
+                        }
+                        echo "</tr>";
+                      }
+                      echo "<tr>";
+                      foreach ($row as $value) {
+                        echo "<td>" . $value . "</td>";
+                      }
+                    echo "</tr>";
+                  }
+                  echo "</table>";
+                  if($result == 0)
+                    echo "No Result Found";
+?>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $(function() {
+     $("#myModal").modal();
+   });
+</script>
+<?php
+   }
+
+   //********** Register student in a course **********//
+   if(isset($_POST['GIMMEABUTTON'])) {
+     $STH = $conn->query("SELECT SessionID, session FROM Session");
+     $STHTWO = $conn->query("SELECT DISTINCT year FROM Term");
+?>
+<div class="panel-body">
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">List of Student Enrolled</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form  method="post">
+                  <label for="sel1">Choose a Session</label>
+                  <select class="form-control" name="sendingSessionID">
+<?php
+                     while($row = $STH->fetch()) {
+                       echo "<option name='display' value='".$row['SessionID']."'>".$row['session']."</option>";
+                     }
+?>
+                  </select>
+                  <label for="sel1"><br>Choose a Year</label>
+                  <select class="form-control" name="sendingYear">
+<?php
+                     while($row = $STHTWO->fetch()) {
+                       echo "<option name='display' value='".$row['year']."'>".$row['year']."</option>";
+                     }
+?>
+                  </select>
+                  <div class="md-form mb-1">
+                     <label for="sel1"><br>Enter Student ID</label>
+                     <input name="sendingUserID" type="text" class="form-control" required>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="submit" class="btn btn-primary" name="ButtonFourteen">Submit</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $(function() {
+   $("#myModal").modal();
+   });
+</script>
+<?php
+   }
+
+   if(isset($_POST['ButtonFourteen'])) {
+   $STH = $conn->query("SELECT c.name AS 'Course Taken'
+                        FROM Course c, Student s, Registration r, Section sc, Term t, Session ses
+                        WHERE t.SessionID = ses.SessionID AND s.StudentID = r.StudentID AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND t.TermID = sc.TermID AND s.StudentID = '".$_POST['sendingUserID']."'
+                        AND t.year = '".$_POST['sendingYear']."' AND ses.sessionID = '".$_POST['sendingSessionID']."'");
+   $result = 0;
+?>
+<div class="panel-body">
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">Course Offered</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+<?php
+                  echo '<table class="table table-bordered  table-striped table-hover text-center">';
+                  $i = 0;
+                  while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
+                    $result = 1;
+                      if ($i == 0) {
+                        $i++;
+                        echo "<tr>";
+                        foreach ($row as $key => $value) {
+                          echo "<th>" . $key . "</th>";
+                        }
+                        echo "</tr>";
+                      }
+                      echo "<tr>";
+                      foreach ($row as $value) {
+                        echo "<td>" . $value . "</td>";
+                      }
+                    echo "</tr>";
+                  }
+                  echo "</table>";
+                  if($result == 0)
+                    echo "No Result Found";
+?>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $(function() {
+     $("#myModal").modal();
+   });
+</script>
+<?php
+   }
+
+   //********** Drop a course for a student **********//
+   if(isset($_POST['GIMMEABUTTON'])) {
+     $STH = $conn->query("SELECT SessionID, session FROM Session");
+     $STHTWO = $conn->query("SELECT DISTINCT year FROM Term");
+?>
+<div class="panel-body">
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">List of Student Enrolled</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form  method="post">
+                  <label for="sel1">Choose a Session</label>
+                  <select class="form-control" name="sendingSessionID">
+<?php
+                     while($row = $STH->fetch()) {
+                       echo "<option name='display' value='".$row['SessionID']."'>".$row['session']."</option>";
+                     }
+?>
+                  </select>
+                  <label for="sel1"><br>Choose a Year</label>
+                  <select class="form-control" name="sendingYear">
+<?php
+                     while($row = $STHTWO->fetch()) {
+                       echo "<option name='display' value='".$row['year']."'>".$row['year']."</option>";
+                     }
+?>
+                  </select>
+                  <div class="md-form mb-1">
+                     <label for="sel1"><br>Enter Student ID</label>
+                     <input name="sendingUserID" type="text" class="form-control" required>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="submit" class="btn btn-primary" name="ButtonFifteen">Submit</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $(function() {
+   $("#myModal").modal();
+   });
+</script>
+<?php
+   }
+
+   if(isset($_POST['ButtonFifteen'])) {
+   $STH = $conn->query("SELECT c.name AS 'Course Taken'
+                        FROM Course c, Student s, Registration r, Section sc, Term t, Session ses
+                        WHERE t.SessionID = ses.SessionID AND s.StudentID = r.StudentID AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND t.TermID = sc.TermID AND s.StudentID = '".$_POST['sendingUserID']."'
+                        AND t.year = '".$_POST['sendingYear']."' AND ses.sessionID = '".$_POST['sendingSessionID']."'");
+   $result = 0;
+?>
+<div class="panel-body">
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">Course Offered</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+<?php
+                  echo '<table class="table table-bordered  table-striped table-hover text-center">';
+                  $i = 0;
+                  while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
+                    $result = 1;
+                      if ($i == 0) {
+                        $i++;
+                        echo "<tr>";
+                        foreach ($row as $key => $value) {
+                          echo "<th>" . $key . "</th>";
+                        }
+                        echo "</tr>";
+                      }
+                      echo "<tr>";
+                      foreach ($row as $value) {
+                        echo "<td>" . $value . "</td>";
+                      }
+                    echo "</tr>";
+                  }
+                  echo "</table>";
+                  if($result == 0)
+                    echo "No Result Found";
+?>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $(function() {
+     $("#myModal").modal();
+   });
+</script>
+<?php
+   }
+
+   //********** Detail report given a student **********//
+   if(isset($_POST['detailStudent'])) {
+?>
+<div class="panel-body">
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">List of Building</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form  method="post">
+                  <div class="md-form mb-1">
+                     <label for="sel1"><br>Enter Student ID</label>
+                     <input name="sendingUserID" type="text" class="form-control" required>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="submit" class="btn btn-primary" name="ButtonSixteen">Submit</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $(function() {
+   $("#myModal").modal();
+   });
+</script>
+<?php
+   }
+
+   if(isset($_POST['ButtonSixteen'])) {
+   $STH = $conn->query("SELECT StudentID, firstName, lastName, SSN, dob, phone, email, address FROM Student WHERE StudentID = '".$_POST['sendingUserID']."'");
+                       $row = $STH->fetch();
+                       $STH = $conn->query("SELECT c.name AS 'Course Name', g.gradeLetter AS 'Grade'
+                                            FROM Student s, Course c, Registration r, Section sc, Grade g
+                                            WHERE s.StudentID = r.StudentID AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND g.RegistrationID = r.RegistrationID AND s.StudentID = '".$_POST['sendingUserID']."'");
+   $result = 0;
+?>
+<div class="panel-body">
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">Detail of Building </h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+<?php
+                  if ($row) {
+                  echo "<b>Student ID: </b>".$row['StudentID']."</br>";
+                  echo "<b>First Name: </b>".$row['firstName']."</br>";
+                  echo "<b>Last Name: </b>".$row['lastName']."</br>";
+                  echo "<b>Socal Security Number: </b>".$row['SSN']."</br>";
+                  echo "<b>Date of Birth: </b>".$row['dob']."</br>";
+                  echo "<b>Phone: </b>".$row['phone']."</br>";
+                  echo "<b>Email: </b>".$row['email']."</br>";
+                  echo "<b>Address: </b>".$row['address']."</br>";
+                }
                   echo '<table class="table table-bordered  table-striped table-hover text-center">';
                   $i = 0;
                   while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
