@@ -9,6 +9,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
    <body id="faculty">
         <?php
                  if(isset($_POST['saveEdit'])) { //Editing a Student
+                   try {
                    $STH = $conn->prepare("UPDATE Instructor SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE InstructorID=?");
                    $STH->bindParam(1, $_POST['firstName']);
                    $STH->bindParam(2, $_POST['lastName']);
@@ -20,11 +21,18 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    $STH->bindParam(8, $_POST['id']);
                    $STH->execute();
                  }
+                 catch (Exception $e) {
+                   echo '
+                   <div class="alert alert-danger text-center" role="alert">Error! '.$e->getMessage().'</div>
+                   ';
+                 }
+                 }
                  if(isset($_POST['delete'])) { //Delete a Student
                    $STH = $conn->prepare("DELETE FROM Instructor WHERE InstructorID=$_POST[id]");
                    $STH->execute();
                  }
                  if(isset($_POST['add'])) { //Insert a Student
+                   try {
                    $STH = $conn->prepare("INSERT INTO Instructor (firstName, lastName, dob, address, phone, email, SSN) Values (?,?,?,?,?,?,?)");
                    $STH->bindParam(1, $_POST['firstName']);
                    $STH->bindParam(2, $_POST['lastName']);
@@ -34,6 +42,12 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    $STH->bindParam(6, $_POST['email']);
                    $STH->bindParam(7, $_POST['SSN']);
                    $STH->execute();
+                 }
+                 catch (Exception $e) {
+                   echo '
+                   <div class="alert alert-danger text-center" role="alert">Error! '.$e->getMessage().'</div>
+                   ';
+                 }
                  }
         ?>
         <html>

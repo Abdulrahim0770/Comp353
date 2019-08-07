@@ -58,7 +58,7 @@ CREATE TABLE `Advisor` (
   PRIMARY KEY (`AdvisorID`),
   KEY `Advisor_ibfk_1_idx` (`ProgramID`),
   CONSTRAINT `Advisor_ibfk_1` FOREIGN KEY (`ProgramID`) REFERENCES `Program` (`ProgramID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `Advisor` (
 
 LOCK TABLES `Advisor` WRITE;
 /*!40000 ALTER TABLE `Advisor` DISABLE KEYS */;
-INSERT INTO `Advisor` VALUES (1,7,'Alfred','Marks','Hall','305','514-555-9100','jm@concordia.ca'),(2,8,'Pam','Ly','Hall','413','514-555-9101','pl@concordia.ca'),(3,9,'Sam','Don','Hall','521','514-555-9102','sd@concordia.ca'),(4,10,'Ron','Wees','Hall','445','514-555-9103','rw@concordia.ca'),(5,11,'Tacko','Fall','Hall','821','514-555-9104','tf@concordia.ca'),(6,12,'Slim','Jim','Hall','902','514-555-9105','sj@concordia.ca'),(7,13,'Ari','Len','Hall','100','514-555-9106','al@concordia.ca'),(8,14,'Les','Brown','Hall','505','514-555-9107','lb@concordia.ca'),(9,15,'Danie','Samp','Hall','620','514-555-9108','ds@concordia.ca'),(10,16,'Liam','Alcalde','Hall','710','514-555-9109','la@concordia.ca'),(11,17,'Fran','Berry','EV','300','514-555-9110','fb@concordia.ca'),(12,18,'Rondo','Rajon','EV','400','514-555-9111','rr@concordia.ca');
+INSERT INTO `Advisor` VALUES (1,7,'Alfred','Marks','Hall','305','514-555-9100','jm@concordia.ca'),(2,8,'Pam','Ly','Hall','413','514-555-9101','pl@concordia.ca'),(3,9,'Sam','Don','Hall','521','514-555-9102','sd@concordia.ca'),(4,10,'Ron','Wees','Hall','445','514-555-9103','rw@concordia.ca'),(5,11,'Tacko','Fall','Hall','821','514-555-9104','tf@concordia.ca'),(6,12,'Slim','Jim','Hall','902','514-555-9105','sj@concordia.ca'),(7,13,'Ari','Len','Hall','100','514-555-9106','al@concordia.ca'),(8,14,'Les','Brown','Hall','505','514-555-9107','lb@concordia.ca'),(9,15,'Danie','Samp','Hall','620','514-555-9108','ds@concordia.ca'),(10,16,'Liam','Alcalde','Hall','710','514-555-9109','la@concordia.ca'),(11,17,'Fran','Berry','EV','300','514-555-9110','fb@concordia.ca'),(12,18,'Rondo','Rajon','EV','400','514-555-9111','rr@concordia.ca'),(14,23,'La','La','EV','100','514-555-9120','ll@concordia.ca'),(15,24,'Manny','Marinez','EV','101','514-555-9130','mm@concordia.ca'),(16,25,'Robert','Covington','EV','102','514-555-9140','roco@concordia.ca');
 /*!40000 ALTER TABLE `Advisor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `Building` (
 
 LOCK TABLES `Building` WRITE;
 /*!40000 ALTER TABLE `Building` DISABLE KEYS */;
-INSERT INTO `Building` VALUES (1,1,'EV','1515 Saint-Catherine St W',12),(2,1,'FB','1250 Guy St',12),(3,1,'FG','1616 Saint-Catherine St W',12),(4,1,'LB','1400 Maisonneuve Blvd W',13),(5,1,'MB','1600 Boulevard de Maisonneuve O',10),(6,2,'AD','7141 Sherbrooke W',11),(7,2,'CB','7141 Sherbrooke W',11),(8,2,'CJ','7141 Sherbrooke W',11),(9,2,'DO','7141 Sherbrooke W',11),(10,2,'PC','7200 Sherbrooke W',11);
+INSERT INTO `Building` VALUES (1,1,'EV','1515 Saint-Catherine St W',10),(2,1,'FB','1250 Guy St',10),(3,1,'FG','1616 Saint-Catherine St W',11),(4,1,'LB','1400 Maisonneuve Blvd W',13),(5,1,'MB','1600 Boulevard de Maisonneuve O',10),(6,2,'AD','7141 Sherbrooke W',9),(7,2,'CB','7141 Sherbrooke W',6),(8,2,'CJ','7141 Sherbrooke W',7),(9,2,'DO','7141 Sherbrooke W',4),(10,2,'PC','7200 Sherbrooke W',9);
 /*!40000 ALTER TABLE `Building` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +221,7 @@ CREATE TABLE `Course` (
   PRIMARY KEY (`CourseID`),
   KEY `Course_ibfk_1` (`DepartmentID`),
   CONSTRAINT `Course_ibfk_1` FOREIGN KEY (`DepartmentID`) REFERENCES `Department` (`DepartmentID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +230,7 @@ CREATE TABLE `Course` (
 
 LOCK TABLES `Course` WRITE;
 /*!40000 ALTER TABLE `Course` DISABLE KEYS */;
-INSERT INTO `Course` VALUES (1,3,'Art 201',3),(2,3,'Comp 352',3),(3,7,'Comp 222',1),(4,9,'Mark 201',3),(5,3,'Comp 353',3),(6,1,'Math 205',3),(7,2,'Mech 332',3),(8,10,'Law 101',2),(9,4,'Comp 355',4),(10,4,'Comp 391',4),(11,5,'Buss 201',3),(12,6,'Socio 104',3),(13,8,'Saxp 379',1);
+INSERT INTO `Course` VALUES (1,7,'Art 201',3),(2,4,'Comp 352',3),(3,7,'Art 101',1),(4,9,'Mark 201',3),(5,4,'Comp 353',3),(6,1,'Math 205',3),(7,3,'Mech 332',3),(8,10,'Law 101',2),(9,4,'Comp 355',4),(10,4,'Comp 391',4),(11,5,'Buss 201',3),(12,6,'Socio 104',3),(13,8,'Saxp 379',1),(14,1,'Math 206',3),(15,1,'Math 204',3),(16,1,'Math 232',3),(17,1,'Math 233',3),(18,7,'Art 233',3),(19,7,'Art 234',3),(20,7,'Art 355',3),(21,4,'Data Structures',4),(22,4,'Syntax Checking',1),(23,3,'Mech 201',3),(24,3,'Mech 202',3),(25,3,'Mech 203',3),(26,3,'Mech 232',3),(27,3,'Mech 233',3);
 /*!40000 ALTER TABLE `Course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,8 +274,11 @@ CREATE TABLE `Degree` (
   `institutionName` varchar(45) DEFAULT NULL,
   `receivedDate` date DEFAULT NULL,
   `overallAvg` int(11) DEFAULT NULL,
-  PRIMARY KEY (`DegreeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+  `Degreecol` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`DegreeID`),
+  KEY `Degree_ibfk_1_idx` (`StudentID`),
+  CONSTRAINT `Degree_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `Student` (`StudentID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +287,7 @@ CREATE TABLE `Degree` (
 
 LOCK TABLES `Degree` WRITE;
 /*!40000 ALTER TABLE `Degree` DISABLE KEYS */;
-INSERT INTO `Degree` VALUES (1,1000026,'BA','Concordia University','2019-06-30',75),(2,1000027,'BSc','Concordia University','2018-12-30',83),(3,1000028,'BEd','Concordia University','2018-12-30',65),(4,1000029,'BComm','Concordia University','2019-06-30',72),(5,1000030,'BCompSc','Concordia University','2018-12-30',94),(6,1000031,'BEng','Concordia University','2018-12-30',98),(7,1000032,'BFA','Concordia University','2019-06-30',62),(8,1000033,'BCompSc','Concordia University','2018-12-30',60),(9,1000034,'BComm','Concordia University','2018-12-30',78),(10,1000035,'BFA','Concordia University','2019-06-30',86),(29,1000007,'DEC CST','Vanier College','2016-06-30',77),(30,1000008,'DEC BA','Vanier College','2016-06-30',85),(31,1000009,'DEC IE','Vanier College','2016-07-30',88),(32,10000010,'DEC AH','Vanier College','2016-06-20',89),(33,1000011,'DEC CST','Vanier College','2016-08-30',90),(34,1000012,'DEC IE','Vanier College','2016-03-30',63),(35,1000013,'DEC AT','Vanier College','2016-05-30',66),(36,1000013,'DEC CST','Vanier College','2016-06-30',88),(37,1000014,'DEC CST','Vanier College','2016-05-25',83);
+INSERT INTO `Degree` VALUES (1,1000006,'BA','Concordia University','2019-06-30',75,NULL),(2,1000007,'BSc','Concordia University','2018-12-30',83,NULL),(3,1000009,'BEd','Concordia University','2018-12-30',65,NULL),(4,1000023,'BComm','Concordia University','2019-06-30',72,NULL),(5,1000025,'BCompSc','Concordia University','2018-12-30',94,NULL),(6,1000026,'BEng','Concordia University','2018-12-30',98,NULL),(7,1000027,'BFA','Concordia University','2019-06-30',62,NULL),(8,1000028,'BCompSc','Concordia University','2018-12-30',60,NULL),(9,1000029,'BComm','Concordia University','2018-12-30',78,NULL),(10,1000058,'BFA','Concordia University','2019-06-30',86,NULL),(29,1000006,'DEC CST','Vanier College','2016-06-30',77,NULL),(30,1000007,'DEC BA','Vanier College','2016-06-30',85,NULL),(31,1000009,'DEC IE','Vanier College','2016-07-30',88,NULL),(32,1000023,'DEC AH','Vanier College','2016-06-20',89,NULL),(33,1000025,'DEC CST','Vanier College','2016-08-30',90,NULL),(34,1000011,'DEC IE','Vanier College','2016-03-30',63,NULL),(35,1000012,'DEC AT','Vanier College','2016-05-30',66,NULL),(36,1000013,'DEC CST','Vanier College','2016-06-30',88,NULL),(37,1000014,'DEC CST','Vanier College','2016-05-25',83,NULL),(38,1000015,'HS Diploma','McDonald\'s High','2012-05-25',80,NULL),(39,1000016,'HS Diploma','McDonald\'s High','2012-05-25',81,NULL),(40,1000017,'HS Diploma','McDonald\'s High','2012-05-25',88,NULL),(41,1000018,'HS Diploma','McDonald\'s High','2012-05-25',78,NULL),(42,1000019,'HS Diploma','McDonald\'s High','2012-05-25',79,NULL),(43,1000020,'HS Diploma','McDonald\'s High','2012-05-25',70,NULL),(44,1000021,'HS Diploma','McDonald\'s High','2012-05-25',65,NULL),(45,1000022,'HS Diploma','McDonald\'s High','2012-05-25',65,NULL),(46,1000026,'HS Diploma','McDonald\'s High','2012-05-25',78,NULL),(47,1000030,'HS Diploma','McDonald\'s High','2012-05-25',88,NULL),(48,1000031,'HS Diploma','McDonald\'s High','2012-05-25',90,NULL),(49,1000032,'HS Diploma','McDonald\'s High','2012-05-25',92,NULL),(50,1000033,'HS Diploma','McDonald\'s High','2012-05-25',94,NULL);
 /*!40000 ALTER TABLE `Degree` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +373,7 @@ CREATE TABLE `EnrollsIN` (
   CONSTRAINT `EnrollsIN_ibfk_2` FOREIGN KEY (`ProgramID`) REFERENCES `Program` (`ProgramID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `EnrollsIN_ibfk_3` FOREIGN KEY (`AdvisorID`) REFERENCES `Advisor` (`AdvisorID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `EnrollsIN_ibfk_4` FOREIGN KEY (`TermID`) REFERENCES `Term` (`TermID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -379,7 +382,7 @@ CREATE TABLE `EnrollsIN` (
 
 LOCK TABLES `EnrollsIN` WRITE;
 /*!40000 ALTER TABLE `EnrollsIN` DISABLE KEYS */;
-INSERT INTO `EnrollsIN` VALUES (22,1000015,12,5,1),(23,1000014,12,5,1),(24,1000013,12,5,1),(25,1000012,12,5,1),(26,1000006,12,5,1),(27,1000007,13,7,2),(29,1000009,15,9,1);
+INSERT INTO `EnrollsIN` VALUES (22,1000015,12,5,1),(23,1000014,12,5,1),(24,1000013,12,5,1),(25,1000012,12,5,1),(26,1000006,12,5,1),(27,1000007,13,7,2),(29,1000009,15,9,1),(57,1000016,7,NULL,1),(58,1000017,8,NULL,2),(59,1000018,9,NULL,3),(60,1000019,10,NULL,4),(61,1000020,11,NULL,5),(62,1000021,12,NULL,6),(63,1000022,13,NULL,7),(64,1000023,14,NULL,8),(65,1000042,15,NULL,9),(66,1000025,16,NULL,10),(67,1000026,17,NULL,11),(68,1000027,18,NULL,12),(69,1000028,19,NULL,1),(70,1000029,7,NULL,2),(71,1000031,8,NULL,3),(72,1000032,9,NULL,4),(73,1000033,12,NULL,5),(74,1000034,19,NULL,6),(75,1000035,13,NULL,7),(76,1000036,14,NULL,8),(77,1000037,15,NULL,9),(78,1000041,16,NULL,10),(79,1000039,17,NULL,11),(80,1000040,18,NULL,12);
 /*!40000 ALTER TABLE `EnrollsIN` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -607,6 +610,7 @@ CREATE TABLE `Instructor` (
   `address` varchar(45) DEFAULT NULL,
   `hasFunding` enum('Yes','No') DEFAULT NULL,
   PRIMARY KEY (`InstructorID`),
+  UNIQUE KEY `SSN_UNIQUE` (`SSN`),
   KEY `Rooms_ibfk_9_idx` (`RoomsID`),
   KEY `Award_ibfk_1_idx` (`AwardID`),
   KEY `Publication_ibfk_1_idx` (`PublicationID`),
@@ -615,7 +619,7 @@ CREATE TABLE `Instructor` (
   CONSTRAINT `Experience_ibfk_1` FOREIGN KEY (`ExperienceID`) REFERENCES `Experience` (`ExperienceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Publication_ibfk_1` FOREIGN KEY (`PublicationID`) REFERENCES `Building` (`BuildingID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Rooms_ibfk_9` FOREIGN KEY (`RoomsID`) REFERENCES `Rooms` (`RoomsID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10000002 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -624,7 +628,7 @@ CREATE TABLE `Instructor` (
 
 LOCK TABLES `Instructor` WRITE;
 /*!40000 ALTER TABLE `Instructor` DISABLE KEYS */;
-INSERT INTO `Instructor` VALUES (1,444,1,9,1,'Thomas','Wimbleton','747 094 203','1956-02-01','450-819-5557','twim@encs.concordia.ca','123 School Avenue','Yes'),(2,213,1,8,2,'Maria','Dumbledore','132 254 963','1991-03-17','450-556-5557','mdum@encs.concordia.ca','123 School Avenue','Yes'),(3,81,5,7,3,'John','Wickboss','093 192 302','1968-04-09','450-693-7775','jwick@encs.concordia.ca','167 Dorchester Avenue','No'),(4,102,4,4,4,'Dalia','Oneflo','222 232 212','1980-02-08','450-693-7775','done@encs.concordia.ca','167 Dorchester Avenue','Yes'),(5,205,2,3,5,'Mark','Electro','939 993 913','1990-01-19','514-499-5588','mele@encs.concordia.ca','167 Magnetto Lane','Yes'),(6,406,3,2,6,'Julia','Child','140 656 245','1982-10-21','450-145-5588','jchi@encs.concordia.ca','1155 Flower Av','Yes'),(7,407,2,1,7,'Pheobe','Buffet','204 204 205','1989-02-04','514-987-1234','pbuff@encs.concordia.ca','1155 Nestle Av','Yes'),(8,561,3,10,8,'Joey','White','787 234 231','1978-02-23','514-157-8462','jwhi@encs.concordia.ca','885 Accross Av','No'),(9,407,5,6,9,'Chandler','Bing','145 642 234','1957-12-24','514-166-1664','cbin@encs.concordia.ca','669 Laughmer Av','No'),(10,545,1,5,10,'Monica','Geller','120 002 192','1966-03-18','450-198-1978','mgel@encs.concordia.ca','669 Cleanec Av','Yes');
+INSERT INTO `Instructor` VALUES (1,444,1,9,1,'Thomas','Wimbleton','sdasdasdasd','1956-02-01','450-819-5557','twim@encs.concordia.ca','123 School Avenue','Yes'),(2,213,1,8,2,'Maria','Dumbledore','132 254 963','1991-03-17','450-556-5557','mdum@encs.concordia.ca','123 School Avenue','Yes'),(3,81,5,7,3,'John','Wickboss','093 192 302','1968-04-09','450-693-7775','jwick@encs.concordia.ca','167 Dorchester Avenue','No'),(4,102,4,4,4,'Dalia','Oneflo','222 232 212','1980-02-08','450-693-7775','done@encs.concordia.ca','167 Dorchester Avenue','Yes'),(5,205,2,3,5,'Mark','Electro','939 993 913','1990-01-19','514-499-5588','mele@encs.concordia.ca','167 Magnetto Lane','Yes'),(6,406,3,2,6,'Julia','Child','140 656 245','1982-10-21','450-145-5588','jchi@encs.concordia.ca','1155 Flower Av','Yes'),(7,407,2,1,7,'Pheobe','Buffet','204 204 205','1989-02-04','514-987-1234','pbuff@encs.concordia.ca','1155 Nestle Av','Yes'),(8,561,3,10,8,'Joey','White','787 234 231','1978-02-23','514-157-8462','jwhi@encs.concordia.ca','885 Accross Av','No'),(9,407,5,6,9,'Chandler','Bing','145 642 234','1957-12-24','514-166-1664','cbin@encs.concordia.ca','669 Laughmer Av','No'),(10,545,1,5,10,'Monica','Geller','120 002 192','1966-03-18','450-198-1978','mgel@encs.concordia.ca','669 Cleanec Av','Yes');
 /*!40000 ALTER TABLE `Instructor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -700,7 +704,7 @@ CREATE TABLE `Program` (
   PRIMARY KEY (`ProgramID`),
   KEY `Program_ibfk_2` (`DepartmentID`),
   CONSTRAINT `Program_ibfk_2` FOREIGN KEY (`DepartmentID`) REFERENCES `Department` (`DepartmentID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -709,7 +713,7 @@ CREATE TABLE `Program` (
 
 LOCK TABLES `Program` WRITE;
 /*!40000 ALTER TABLE `Program` DISABLE KEYS */;
-INSERT INTO `Program` VALUES (7,4,'Computer Science'),(8,3,'Software Engineering'),(9,6,'Business'),(10,10,'Law and Order'),(11,4,'Computer Games'),(12,5,'Sports Psychology'),(13,1,'Applied Math'),(14,2,'Physics'),(15,3,'Mechanical Engineering'),(16,7,'Art'),(17,5,'Sociology'),(18,6,'Marketing'),(19,4,'ESports');
+INSERT INTO `Program` VALUES (7,4,'Computer Science'),(8,3,'Software Engineering'),(9,6,'Business'),(10,10,'Law and Order'),(11,4,'Computer Games'),(12,5,'Sports Psychology'),(13,1,'Applied Math'),(14,2,'Physics'),(15,3,'Mechanical Engineering'),(16,7,'Art'),(17,5,'Sociology'),(18,6,'Marketing'),(19,4,'ESports'),(20,6,'Entrepreneurship'),(21,6,'Economics'),(22,6,'Finance'),(23,3,'Aerospace'),(24,3,'Electrical'),(25,3,'Mechanical'),(26,4,'Cyber Security'),(27,4,'Syntax Checker');
 /*!40000 ALTER TABLE `Program` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -754,7 +758,7 @@ CREATE TABLE `Registration` (
   KEY `Registration_ibfk_3_idx` (`SectionID`),
   CONSTRAINT `Registration_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `Student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Registration_ibfk_3` FOREIGN KEY (`SectionID`) REFERENCES `Section` (`SectionID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -763,7 +767,7 @@ CREATE TABLE `Registration` (
 
 LOCK TABLES `Registration` WRITE;
 /*!40000 ALTER TABLE `Registration` DISABLE KEYS */;
-INSERT INTO `Registration` VALUES (1,1000006,1,'2018-08-03'),(2,1000009,2,'2018-08-02'),(3,1000006,3,'2018-08-03'),(4,1000006,4,'2018-08-03'),(5,1000006,5,'2018-08-02'),(6,1000006,6,'2018-08-03'),(7,1000006,7,'2018-08-03');
+INSERT INTO `Registration` VALUES (1,1000006,1,'2018-08-03'),(2,1000009,2,'2018-08-02'),(3,1000006,3,'2018-08-03'),(4,1000006,4,'2018-08-03'),(5,1000006,5,'2018-08-02'),(6,1000006,6,'2018-08-03'),(7,1000006,7,'2018-08-03'),(76,1000007,1,'2018-08-03'),(77,1000009,2,'2018-08-03'),(78,1000009,3,'2018-08-03'),(79,1000009,4,'2018-08-03'),(80,1000009,5,'2018-08-03'),(81,1000009,6,'2018-08-03'),(82,1000011,7,'2018-08-03'),(83,1000011,1,'2018-08-03'),(84,1000011,2,'2018-08-03'),(85,1000011,3,'2018-08-03'),(112,1000012,8,'2018-08-03'),(113,1000012,9,'2019-08-03'),(114,1000012,10,'2019-08-03'),(115,1000012,11,'2019-08-03'),(116,1000013,12,'2019-08-03'),(117,1000013,8,'2018-08-03'),(118,1000013,9,'2019-08-03'),(119,1000013,10,'2019-08-03'),(120,1000014,11,'2019-08-03'),(121,1000014,12,'2019-08-03'),(122,1000014,8,'2018-08-03'),(123,1000014,9,'2019-08-03'),(124,1000014,10,'2019-08-03'),(125,1000014,19,'2019-08-03'),(126,1000015,20,'2019-08-03'),(127,1000015,21,'2018-08-03'),(128,1000015,22,'2019-08-03'),(129,1000016,23,'2019-08-03'),(130,1000016,11,'2019-08-03'),(131,1000017,12,'2019-08-03'),(132,1000017,13,'2018-08-03'),(133,1000017,14,'2019-08-03'),(134,1000018,15,'2019-08-03'),(135,1000018,16,'2019-08-03'),(136,1000018,17,'2019-08-03'),(137,1000018,18,'2018-08-03'),(138,1000019,39,'2018-08-03'),(139,1000019,40,'2018-08-03'),(140,1000019,41,'2018-08-03'),(141,1000020,42,'2018-08-03'),(142,1000021,43,'2018-08-03'),(143,1000021,39,'2018-08-03');
 /*!40000 ALTER TABLE `Registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -784,7 +788,7 @@ CREATE TABLE `Rooms` (
   PRIMARY KEY (`RoomsID`),
   KEY `BuildingID` (`BuildingID`),
   CONSTRAINT `Rooms_ibfk_1` FOREIGN KEY (`BuildingID`) REFERENCES `Building` (`BuildingID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10526 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10673 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -793,7 +797,7 @@ CREATE TABLE `Rooms` (
 
 LOCK TABLES `Rooms` WRITE;
 /*!40000 ALTER TABLE `Rooms` DISABLE KEYS */;
-INSERT INTO `Rooms` VALUES (44,5,60,'Classroom',4,440),(79,10,18,'Lab',7,790),(80,10,18,'Lab',8,800),(81,10,18,'Lab',8,810),(82,10,18,'Lab',8,820),(83,10,18,'Lab',8,830),(100,9,15,'OfficeGrade',1,100),(101,9,15,'OfficeGrade',1,101),(102,9,15,'OfficeGrade',1,102),(103,9,15,'OfficeGrade',1,103),(104,9,15,'OfficeGrade',1,104),(205,2,41,'Classroom',2,205),(207,2,43,'Classroom',2,207),(209,2,46,'Classroom',2,209),(213,2,50,'Classroom',2,213),(225,2,40,'Classroom',2,225),(317,1,5,'OfficeGrade',3,317),(403,4,60,'Conference Room',4,403),(404,4,60,'Classroom',4,404),(405,4,60,'Classroom',4,405),(406,4,60,'Classroom',4,406),(407,4,60,'Classroom',4,407),(441,5,60,'Classroom',4,441),(442,5,60,'Classroom',4,442),(443,5,60,'Classroom',4,443),(444,5,60,'Classroom',4,444),(525,1,50,'Classroom',5,525),(536,1,38,'Lab',5,536),(545,4,45,'Conference Room',5,545),(561,4,45,'Conference Room',5,561),(562,4,45,'Conference Room',5,562),(564,4,45,'Conference Room',5,564),(565,4,45,'Conference Room',5,565),(612,7,20,'OfficeGrade',6,612),(622,7,20,'Lab',6,622),(632,7,20,'Lab',6,632),(642,7,20,'Lab',6,642),(652,7,20,'Lab',6,652),(712,8,66,'Lab',7,712),(722,8,66,'Lab',7,722),(732,8,66,'Lab',7,732),(742,8,66,'Lab',7,742),(753,8,66,'Lab',7,753),(912,6,10,'OfficeGrade',9,912),(922,6,10,'OfficeGrade',9,922),(932,6,10,'OfficeGrade',9,932),(942,6,10,'OfficeGrade',9,942),(952,6,10,'OfficeGrade',9,952),(962,1,30,'Conference Room',9,962),(1052,1,9,'Conference Room',10,1052),(1111,3,91,'Classroom',11,1111),(1112,3,89,'Classroom',11,1112),(1113,3,89,'Classroom',11,1113),(1115,3,89,'Classroom',11,1115),(1116,3,89,'Classroom',11,1116);
+INSERT INTO `Rooms` VALUES (44,5,60,'Classroom',4,440),(79,10,18,'Lab',7,790),(80,10,18,'Lab',8,800),(81,10,18,'Lab',8,810),(82,10,18,'Lab',8,820),(83,10,18,'Lab',8,830),(100,9,15,'OfficeGrade',1,100),(101,9,15,'OfficeGrade',1,101),(102,9,15,'OfficeGrade',1,102),(103,9,15,'OfficeGrade',1,103),(104,9,15,'OfficeGrade',1,104),(205,2,41,'Classroom',2,205),(207,2,43,'Classroom',2,207),(209,2,46,'Classroom',2,209),(213,2,50,'Classroom',2,213),(225,2,40,'Classroom',2,225),(317,1,5,'OfficeGrade',3,317),(403,4,60,'Conference Room',4,403),(404,4,60,'Classroom',4,404),(405,4,60,'Classroom',4,405),(406,4,60,'Classroom',4,406),(407,4,60,'Classroom',4,407),(441,5,60,'Classroom',4,441),(442,5,60,'Classroom',4,442),(443,5,60,'Classroom',4,443),(444,5,60,'Classroom',4,444),(525,1,50,'Classroom',5,525),(536,1,38,'Lab',5,536),(545,4,45,'Conference Room',5,545),(561,4,45,'Conference Room',5,561),(562,4,45,'Conference Room',5,562),(564,4,45,'Conference Room',5,564),(565,4,45,'Conference Room',5,565),(612,7,20,'OfficeGrade',6,612),(622,7,20,'Lab',6,622),(632,7,20,'Lab',6,632),(642,7,20,'Lab',6,642),(652,7,20,'Lab',6,652),(712,8,66,'Lab',7,712),(722,8,66,'Lab',7,722),(732,8,66,'Lab',7,732),(742,8,66,'Lab',7,742),(753,8,66,'Lab',7,753),(912,6,10,'OfficeGrade',9,912),(922,6,10,'OfficeGrade',9,922),(932,6,10,'OfficeGrade',9,932),(942,6,10,'OfficeGrade',9,942),(952,6,10,'OfficeGrade',9,952),(962,1,30,'Conference Room',9,962),(1052,1,9,'Conference Room',10,1052),(1111,3,91,'Classroom',11,1111),(1112,3,89,'Classroom',11,1112),(1113,3,89,'Classroom',11,1113),(1115,3,89,'Classroom',11,1115),(1116,3,89,'Classroom',11,1116),(10526,1,30,'Classroom',1,100),(10527,1,30,'Classroom',1,110),(10528,1,30,'Classroom',2,200),(10529,1,30,'Classroom',2,230),(10530,1,30,'Classroom',3,300),(10531,1,30,'Classroom',3,310),(10532,1,30,'Classroom',4,400),(10533,1,30,'Classroom',4,410),(10534,1,30,'Classroom',5,500),(10535,1,30,'Classroom',5,510),(10536,1,30,'Classroom',6,600),(10537,1,30,'Classroom',6,610),(10538,1,30,'Classroom',7,700),(10539,1,30,'Classroom',7,710),(10540,1,20,'Lab',8,800),(10541,1,20,'Lab',8,810),(10542,2,40,'Classroom',1,100),(10543,2,40,'Classroom',1,110),(10544,2,40,'Classroom',2,200),(10545,2,40,'Classroom',2,210),(10546,2,40,'Classroom',3,300),(10547,2,40,'Classroom',3,310),(10548,2,40,'Classroom',5,500),(10549,2,40,'Classroom',5,510),(10550,2,40,'Classroom',6,600),(10551,2,40,'Classroom',6,610),(10552,2,40,'Classroom',7,700),(10553,2,40,'Classroom',7,710),(10554,2,40,'Classroom',8,800),(10555,2,40,'Classroom',8,810),(10556,2,40,'Classroom',9,900),(10557,2,40,'Classroom',9,910),(10558,2,40,'Classroom',10,1000),(10559,2,40,'Classroom',10,1010),(10560,3,20,'Classroom',1,100),(10561,3,20,'Classroom',1,110),(10562,3,20,'Classroom',2,200),(10563,3,20,'Classroom',2,210),(10564,3,20,'Classroom',3,300),(10565,3,20,'Classroom',3,310),(10566,3,20,'Classroom',4,400),(10567,3,20,'Classroom',4,410),(10568,3,20,'Classroom',5,500),(10569,3,20,'Classroom',5,510),(10570,3,20,'Classroom',6,600),(10571,3,20,'Classroom',6,610),(10572,3,20,'Classroom',7,700),(10573,3,20,'Classroom',7,710),(10574,3,20,'Classroom',8,800),(10575,3,20,'Classroom',8,810),(10576,3,20,'Classroom',9,900),(10577,3,20,'Lab',9,910),(10578,3,20,'Lab',10,1000),(10579,4,15,'Classroom',1,100),(10580,4,15,'Classroom',1,110),(10581,4,15,'Classroom',2,200),(10582,4,15,'Classroom',2,210),(10583,4,15,'Classroom',3,300),(10584,4,15,'Classroom',3,310),(10585,4,15,'Classroom',4,400),(10586,4,15,'Classroom',4,410),(10587,4,15,'Classroom',6,600),(10588,4,15,'Classroom',6,610),(10589,4,15,'Classroom',7,700),(10590,4,15,'Classroom',7,710),(10591,4,15,'Classroom',8,800),(10592,4,15,'Classroom',8,810),(10593,4,15,'Classroom',9,900),(10594,4,15,'Classroom',13,1300),(10595,4,15,'Classroom',10,1000),(10596,4,15,'Classroom',11,1100),(10597,5,20,'Classroom',1,100),(10598,5,20,'Classroom',1,110),(10599,5,20,'Classroom',2,200),(10600,5,20,'Classroom',2,210),(10601,5,20,'Classroom',3,300),(10602,5,20,'Classroom',3,310),(10603,5,20,'Classroom',5,500),(10604,5,20,'Classroom',5,510),(10605,5,20,'Classroom',6,600),(10606,5,20,'Classroom',7,700),(10607,5,20,'Classroom',8,800),(10608,5,20,'Lab',8,810),(10609,5,20,'Lab',9,900),(10610,5,20,'Lab',10,1000),(10611,6,30,'Classroom',1,100),(10612,6,30,'Classroom',1,110),(10613,6,30,'Classroom',2,200),(10614,6,30,'Classroom',2,210),(10615,6,30,'Classroom',3,300),(10616,6,30,'Classroom',3,310),(10617,6,30,'Classroom',4,400),(10618,6,30,'Classroom',4,410),(10619,6,30,'Classroom',5,500),(10620,6,30,'Classroom',5,510),(10621,7,30,'Classroom',1,100),(10622,7,30,'Classroom',1,110),(10623,7,30,'Classroom',2,200),(10624,7,30,'Classroom',2,210),(10625,7,30,'Classroom',3,300),(10626,7,30,'Classroom',3,310),(10627,7,30,'Classroom',4,400),(10628,7,30,'Classroom',4,410),(10629,7,30,'Classroom',5,500),(10630,7,30,'Classroom',5,510),(10631,7,15,'Lab',6,600),(10632,7,15,'Lab',6,610),(10633,8,30,'Classroom',1,100),(10634,8,30,'Classroom',1,110),(10635,8,30,'Classroom',2,200),(10636,8,30,'Classroom',2,210),(10637,8,30,'Classroom',3,300),(10638,8,30,'Classroom',3,310),(10639,8,30,'Classroom',4,400),(10640,8,30,'Classroom',4,410),(10641,8,30,'Classroom',5,500),(10642,8,30,'Classroom',5,500),(10643,8,30,'Classroom',6,600),(10644,8,15,'Lab',6,610),(10645,6,20,'Classroom',6,600),(10646,6,25,'Classroom',6,610),(10647,6,20,'Classroom',6,700),(10648,6,20,'Classroom',6,710),(10649,6,20,'Classroom',6,800),(10650,9,10,'OfficeGrade',2,200),(10651,9,10,'OfficeGrade',2,210),(10652,9,10,'OfficeGrade',3,300),(10653,9,10,'OfficeGrade',3,310),(10654,9,10,'OfficeGrade',4,400),(10655,9,10,'OfficeGrade',4,410),(10656,10,30,'Classroom',1,100),(10657,10,30,'Classroom',1,110),(10658,10,30,'Classroom',2,200),(10659,10,30,'Classroom',2,210),(10660,10,30,'Classroom',3,300),(10661,10,30,'Classroom',3,310),(10662,10,30,'Classroom',4,400),(10663,10,30,'Classroom',4,410),(10664,10,30,'Classroom',5,500),(10665,10,30,'Classroom',5,510),(10666,10,30,'Classroom',6,600),(10667,10,30,'Classroom',6,610),(10668,10,30,'Classroom',7,700),(10669,10,30,'Classroom',7,710),(10670,10,30,'Classroom',9,900),(10671,10,30,'Classroom',9,910);
 /*!40000 ALTER TABLE `Rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -819,7 +823,7 @@ CREATE TABLE `Section` (
   CONSTRAINT `Section_ibfk_2` FOREIGN KEY (`RoomsID`) REFERENCES `Rooms` (`RoomsID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Section_ibfk_4` FOREIGN KEY (`TermID`) REFERENCES `Term` (`TermID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Section_ibfk_7` FOREIGN KEY (`CourseID`) REFERENCES `Course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -828,7 +832,7 @@ CREATE TABLE `Section` (
 
 LOCK TABLES `Section` WRITE;
 /*!40000 ALTER TABLE `Section` DISABLE KEYS */;
-INSERT INTO `Section` VALUES (1,44,2,6,1,1),(2,525,3,5,6,2),(3,205,4,6,2,3),(4,207,8,6,8,6),(5,1111,7,7,7,5),(6,209,5,6,9,7),(7,213,6,6,3,4),(8,209,2,5,6,1),(9,213,5,5,6,3),(10,205,6,5,6,5),(11,1111,7,5,6,6);
+INSERT INTO `Section` VALUES (1,44,2,2,1,1),(2,525,3,1,6,2),(3,205,4,2,2,3),(4,207,8,1,8,6),(5,1111,7,7,7,5),(6,209,5,2,9,7),(7,213,6,2,3,4),(8,209,2,1,15,1),(9,213,5,1,14,3),(10,205,6,1,16,5),(11,1111,7,1,17,6),(12,10526,1,7,1,1),(13,10527,2,8,2,2),(14,10528,3,9,3,3),(15,10529,4,10,4,4),(16,10530,5,11,5,5),(17,10531,6,12,6,6),(18,10532,7,8,7,1),(19,10533,1,9,8,2),(20,10534,2,10,9,3),(21,10535,3,11,11,4),(22,10536,4,12,12,5),(23,10537,6,11,13,7),(24,10538,1,2,18,3),(25,10539,3,2,19,5),(26,10540,5,2,20,7),(27,10541,3,2,10,4),(28,10543,2,2,21,5),(29,10542,1,2,22,6),(30,10547,2,1,6,1),(31,10544,5,1,6,3),(32,10545,6,1,6,5),(33,10546,7,1,6,6),(39,10547,1,1,23,1),(40,10548,2,1,24,2),(41,10549,3,1,25,3),(42,10550,4,1,26,4),(43,10551,5,1,27,5);
 /*!40000 ALTER TABLE `Section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -872,7 +876,8 @@ CREATE TABLE `Student` (
   `phone` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`StudentID`)
+  PRIMARY KEY (`StudentID`),
+  UNIQUE KEY `SSN_UNIQUE` (`SSN`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1000059 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -882,7 +887,7 @@ CREATE TABLE `Student` (
 
 LOCK TABLES `Student` WRITE;
 /*!40000 ALTER TABLE `Student` DISABLE KEYS */;
-INSERT INTO `Student` VALUES (1000006,'Neeham','Titlemans','123 456 789','2019-08-01','514-333-9999','jaketitle@gmail.com','15 Dragon Streets'),(1000007,'Dirk','Gently','159 753 123','1998-05-22','514-200-5322','dirkgently@gmail.com','100 Victoria Street'),(1000009,'Tevonn','Walker','987 159 321','1998-07-06','514-111-1124','twalker@gmail.com','734 Jasmine Street'),(1000011,'Tom','Goodman','738 072 784','1994-12-02','450-666-7896','goodmanflies@gmail.com','833 Dragon Ave'),(1000012,'Jonathan','Willis','576 656 805','1992-06-09','450-357-9510','jwill5@gmail.com','52-12 Romand Avenue'),(1000013,'Michael','Scott','613 561 539','1997-02-22','514-112-7536','Dundermifflin@email.com','115 Office Avenue'),(1000014,'Phyllis','Williams','737 480 426','1994-12-02','514-654-3214','cuteywill@gmail.com','1125 Office Avenue'),(1000015,'Scott','Wetland','335 200 119','1995-10-31','514-654-3217','watlandamiright@gmail.com','963 Wattka st'),(1000016,'Manilla','Louzon','779 821 214','1996-04-16','438-626-1234','manillathebest@gmail.com','1156 Hollywood Av'),(1000017,'Electra','Goodwill','268 023 702','1999-06-04','514-467-5556','elec75@msn.com','139 Brookhill Street'),(1000018,'Mario','Plumberman','775 863 087','1999-06-15','438-115-3339','drmario@hotmail.com','111 Mushroomking Ave'),(1000019,'Luigi','Plumberman','605 093 160','1992-10-06','438-119-4445','luigidabest@gmail.com','121 Mushroomking Ave'),(1000020,'Ash','Ketchum','201 977 295','1993-01-04','514-987-6543','pikapika1@gmail.com','665 Pallet Ave'),(1000021,'Gary','Blue','446 004 061','1993-03-27','514-334-3344','ratawata@yahoo.com','676 Pallet Ave'),(1000022,'Britney','Whitemen','736 499 229','1990-08-10','514-555-1475','foreveryoung@msn.com','558 Wallet St'),(1000023,'Suzanne','Baker','501 114 649','1989-04-20','450-726-4747','mjorplf9r7@thrubay.com','373  rue des Eglises Est'),(1000025,'Leonard','Johnson','327 998 209','1996-02-17','514-376-8344','6r239febnn6@iffymedia.com','6817 43 Av'),(1000026,'Derrick','Penman','006 541 312','1997-12-17','514-970-8739','eixx4c5blv@fakemailgenerator.net','2896  rue Levy'),(1000027,'Betsys','Troy','443 774 179','1993-11-25','519-885-3625','735cjwms0ov@thrubay.com','3617  Albert Street'),(1000028,'Christine','Jones','734 415 987','1996-07-16','807-353-3592','b10uxrmzhse@iffymedia.com','1070  Nelson Street'),(1000029,'Frank','Pitts','271 892 028','1990-05-19','604-992-4191','u3kz1uzwkpe@payspun.com','1598  Robson St'),(1000030,'Stephen','Buchanan','525 709 747','1990-11-14','250-647-2592','ldkjyfm4bqi@claimab.com','4546  Ganges Road'),(1000031,'Marilyn','Henderson','043 906 130','1992-01-08','416-471-7720','d5tdy9dwnjw@fakemailgenerator.net','3825  Yonge Street'),(1000032,'Scott','Jarboe','127 664 274','1993-11-17','604-268-4317','mvp3bx96uya@iffymedia.com','1521  Hammarskjold Dr'),(1000033,'Donald','Cruz','005 149 828','1995-09-03','403-749-9054','aonxg16s00d@thrubay.com','4079  Port Washington Road'),(1000034,'Roger','White','716 735 402','1990-04-20','519-245-1310','sgayjpm78bk@fakemailgenerator.net','1414  Scotchmere Dr'),(1000035,'Chantel','Mueller','726 519 861','1994-05-08','416-764-9643','mzr64xpuy3h@fakemailgenerator.net','1384  Queen Elizabeth Boulevard'),(1000036,'Charles','Hirano','726 519 861','1998-03-10','613-761-4344','cv36ry3zylt@fakemailgenerator.net','686  Carling Avenue'),(1000037,'Teddy','Kan','270 972 094','1995-09-30','416-861-5829','zvfwg8dw4ar@payspun.com','289  Adelaide St'),(1000039,'John','Stanley','710 202 219','1991-04-24','604-341-0581','z54sn8pjsy@claimab.com','4907  James Street'),(1000040,'Phyllis','Thrailkill','580 316 719','1991-10-25','519-350-9777','rmietznxkyl@claimab.com','502  Scotchmere Dr'),(1000041,'Gisela','Carmichael','332 220 987','1999-03-30','905-238-6366','tyotqfb4jgg@thrubay.com','2568  Wellington Street'),(1000042,'Monica','Knight','090 975 947','1992-10-21','613-797-9273','laxth66twb@fakemailgenerator.net','2255  Carling Avenue'),(1000045,'Dj','Khalid','159 054 055','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000046,'Dj','Khalid','119 473 486','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000047,'Dj','Khalid','233 881 259','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000048,'Dj','Khalid','011 780 764','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000049,'Dj','Khalid','595 698 150','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000050,'Dj','Khalid','005 192 117','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000051,'Dj','Khalid','085 143 659','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000055,'Nicholas','Bergeron','058 318 247','1993-06-11','514-123-4567','nicho@gmail.com','Avenue Essential'),(1000057,'Jameson','Bond','5551234567','1988-08-01','5145551489','mrbond@gmail.com','1715 Dragon Street'),(1000058,'Thuyohn','Thurai','123 546 789 ','1993-09-05','514-989-3232','thuyohn@gmail.com','456 maisonneuve');
+INSERT INTO `Student` VALUES (1000006,'James','Bond','789 456 123','2019-08-01','514-333-9999','jaketitle@gmail.com','15 Dragon Streets'),(1000007,'Dirk','Gently','789 456 129','1998-05-22','514-200-5322','dirkgently@gmail.com','100 Victoria Street'),(1000009,'Tevonn','Walker','987 159 321','1998-07-06','514-111-1124','twalker@gmail.com','734 Jasmine Street'),(1000011,'Tom','Goodman','738 072 784','1994-12-02','450-666-7896','goodmanflies@gmail.com','833 Dragon Ave'),(1000012,'Jonathan','Willis','576 656 805','1992-06-09','450-357-9510','jwill5@gmail.com','52-12 Romand Avenue'),(1000013,'Michael','Scott','613 561 539','1997-02-22','514-112-7536','Dundermifflin@email.com','115 Office Avenue'),(1000014,'Phyllis','Williams','737 480 426','1994-12-02','514-654-3214','cuteywill@gmail.com','1125 Office Avenue'),(1000015,'Scott','Wetland','335 200 119','1995-10-31','514-654-3217','watlandamiright@gmail.com','963 Wattka st'),(1000016,'Manilla','Louzon','779 821 214','1996-04-16','438-626-1234','manillathebest@gmail.com','1156 Hollywood Av'),(1000017,'Electra','Goodwill','268 023 702','1999-06-04','514-467-5556','elec75@msn.com','139 Brookhill Street'),(1000018,'Mario','Plumberman','775 863 087','1999-06-15','438-115-3339','drmario@hotmail.com','111 Mushroomking Ave'),(1000019,'Luigi','Plumberman','605 093 160','1992-10-06','438-119-4445','luigidabest@gmail.com','121 Mushroomking Ave'),(1000020,'Ash','Ketchum','201 977 295','1993-01-04','514-987-6543','pikapika1@gmail.com','665 Pallet Ave'),(1000021,'Gary','Blue','446 004 061','1993-03-27','514-334-3344','ratawata@yahoo.com','676 Pallet Ave'),(1000022,'Britney','Whitemen','736 499 229','1990-08-10','514-555-1475','foreveryoung@msn.com','558 Wallet St'),(1000023,'Suzanne','Baker','501 114 649','1989-04-20','450-726-4747','mjorplf9r7@thrubay.com','373  rue des Eglises Est'),(1000025,'Leonard','Johnson','327 998 209','1996-02-17','514-376-8344','6r239febnn6@iffymedia.com','6817 43 Av'),(1000026,'Derrick','Penman','006 541 312','1997-12-17','514-970-8739','eixx4c5blv@fakemailgenerator.net','2896  rue Levy'),(1000027,'Betsys','Troy','443 774 179','1993-11-25','519-885-3625','735cjwms0ov@thrubay.com','3617  Albert Street'),(1000028,'Christine','Jones','734 415 987','1996-07-16','807-353-3592','b10uxrmzhse@iffymedia.com','1070  Nelson Street'),(1000029,'Frank','Pitts','271 892 028','1990-05-19','604-992-4191','u3kz1uzwkpe@payspun.com','1598  Robson St'),(1000030,'Stephen','Buchanan','525 709 747','1990-11-14','250-647-2592','ldkjyfm4bqi@claimab.com','4546  Ganges Road'),(1000031,'Marilyn','Henderson','043 906 130','1992-01-08','416-471-7720','d5tdy9dwnjw@fakemailgenerator.net','3825  Yonge Street'),(1000032,'Scott','Jarboe','127 664 274','1993-11-17','604-268-4317','mvp3bx96uya@iffymedia.com','1521  Hammarskjold Dr'),(1000033,'Donald','Cruz','005 149 828','1995-09-03','403-749-9054','aonxg16s00d@thrubay.com','4079  Port Washington Road'),(1000034,'Roger','White','716 735 402','1990-04-20','519-245-1310','sgayjpm78bk@fakemailgenerator.net','1414  Scotchmere Dr'),(1000035,'Chantel','Mueller','727 519 861','1994-05-08','416-764-9643','mzr64xpuy3h@fakemailgenerator.net','1384  Queen Elizabeth Boulevard'),(1000036,'Charles','Hirano','726 519 861','1998-03-10','613-761-4344','cv36ry3zylt@fakemailgenerator.net','686  Carling Avenue'),(1000037,'Teddy','Kan','270 972 094','1995-09-30','416-861-5829','zvfwg8dw4ar@payspun.com','289  Adelaide St'),(1000039,'John','Stanley','710 202 219','1991-04-24','604-341-0581','z54sn8pjsy@claimab.com','4907  James Street'),(1000040,'Phyllis','Thrailkill','580 316 719','1991-10-25','519-350-9777','rmietznxkyl@claimab.com','502  Scotchmere Dr'),(1000041,'Gisela','Carmichael','332 220 987','1999-03-30','905-238-6366','tyotqfb4jgg@thrubay.com','2568  Wellington Street'),(1000042,'Monica','Knight','090 975 947','1992-10-21','613-797-9273','laxth66twb@fakemailgenerator.net','2255  Carling Avenue'),(1000045,'Dj','Khalid','159 054 055','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000046,'Dj','Khalid','119 473 486','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000047,'Dj','Khalid','233 881 259','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000048,'Dj','Khalid','011 780 764','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000049,'Dj','Khalid','595 698 150','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000050,'Dj','Khalid','005 192 117','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000051,'Dj','Khalid','085 143 659','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000055,'Nicholas','Bergeron','058 318 247','1993-06-11','514-123-4567','nicho@gmail.com','Avenue Essential'),(1000057,'Jameson','Bond','555 123 456','1988-08-01','5145551489','mrbond@gmail.com','1715 Dragon Street'),(1000058,'Thuyohn','Thurai','123 546 789 ','1993-09-05','514-989-3232','thuyohn@gmail.com','456 maisonneuve');
 /*!40000 ALTER TABLE `Student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -964,7 +969,7 @@ CREATE TABLE `Term` (
 
 LOCK TABLES `Term` WRITE;
 /*!40000 ALTER TABLE `Term` DISABLE KEYS */;
-INSERT INTO `Term` VALUES (1,2,2018),(2,1,2018),(3,3,2019),(4,4,2019),(5,1,2018),(6,2,2018),(7,3,2018),(8,4,2018),(9,1,2019),(10,2,2019),(11,3,2019),(12,4,2019);
+INSERT INTO `Term` VALUES (1,1,2018),(2,2,2018),(3,3,2018),(4,4,2018),(5,1,2019),(6,2,2019),(7,3,2019),(8,4,2019),(9,1,2020),(10,2,2020),(11,3,2020),(12,4,2020);
 /*!40000 ALTER TABLE `Term` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1064,7 +1069,7 @@ CREATE TABLE `UnderGraduateProgram` (
   PRIMARY KEY (`UnderGraduateProgramID`),
   KEY `UnderGraduateProgram_ibfk_1` (`ProgramID`),
   CONSTRAINT `UnderGraduateProgram_ibfk_1` FOREIGN KEY (`ProgramID`) REFERENCES `Program` (`ProgramID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1073,7 +1078,7 @@ CREATE TABLE `UnderGraduateProgram` (
 
 LOCK TABLES `UnderGraduateProgram` WRITE;
 /*!40000 ALTER TABLE `UnderGraduateProgram` DISABLE KEYS */;
-INSERT INTO `UnderGraduateProgram` VALUES (1,7,90),(2,8,90),(3,9,90),(4,10,90),(5,11,90),(6,12,90),(7,13,90),(8,14,90),(9,15,90),(10,18,90);
+INSERT INTO `UnderGraduateProgram` VALUES (1,7,90),(2,8,90),(3,9,90),(4,10,90),(5,11,90),(6,12,90),(7,13,90),(8,14,90),(9,15,90),(10,18,90),(12,20,90),(13,21,90),(14,22,90),(15,23,120),(16,24,120),(17,25,120),(18,19,90),(19,26,90),(20,27,90);
 /*!40000 ALTER TABLE `UnderGraduateProgram` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1086,4 +1091,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-06 18:29:59
+-- Dump completed on 2019-08-07  9:40:05
