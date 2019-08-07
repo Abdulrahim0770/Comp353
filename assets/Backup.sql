@@ -274,7 +274,6 @@ CREATE TABLE `Degree` (
   `institutionName` varchar(45) DEFAULT NULL,
   `receivedDate` date DEFAULT NULL,
   `overallAvg` int(11) DEFAULT NULL,
-  `Degreecol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`DegreeID`),
   KEY `Degree_ibfk_1_idx` (`StudentID`),
   CONSTRAINT `Degree_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `Student` (`StudentID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -287,7 +286,7 @@ CREATE TABLE `Degree` (
 
 LOCK TABLES `Degree` WRITE;
 /*!40000 ALTER TABLE `Degree` DISABLE KEYS */;
-INSERT INTO `Degree` VALUES (1,1000006,'BA','Concordia University','2019-06-30',75,NULL),(2,1000007,'BSc','Concordia University','2018-12-30',83,NULL),(3,1000009,'BEd','Concordia University','2018-12-30',65,NULL),(4,1000023,'BComm','Concordia University','2019-06-30',72,NULL),(5,1000025,'BCompSc','Concordia University','2018-12-30',94,NULL),(6,1000026,'BEng','Concordia University','2018-12-30',98,NULL),(7,1000027,'BFA','Concordia University','2019-06-30',62,NULL),(8,1000028,'BCompSc','Concordia University','2018-12-30',60,NULL),(9,1000029,'BComm','Concordia University','2018-12-30',78,NULL),(10,1000058,'BFA','Concordia University','2019-06-30',86,NULL),(29,1000006,'DEC CST','Vanier College','2016-06-30',77,NULL),(30,1000007,'DEC BA','Vanier College','2016-06-30',85,NULL),(31,1000009,'DEC IE','Vanier College','2016-07-30',88,NULL),(32,1000023,'DEC AH','Vanier College','2016-06-20',89,NULL),(33,1000025,'DEC CST','Vanier College','2016-08-30',90,NULL),(34,1000011,'DEC IE','Vanier College','2016-03-30',63,NULL),(35,1000012,'DEC AT','Vanier College','2016-05-30',66,NULL),(36,1000013,'DEC CST','Vanier College','2016-06-30',88,NULL),(37,1000014,'DEC CST','Vanier College','2016-05-25',83,NULL),(38,1000015,'HS Diploma','McDonald\'s High','2012-05-25',80,NULL),(39,1000016,'HS Diploma','McDonald\'s High','2012-05-25',81,NULL),(40,1000017,'HS Diploma','McDonald\'s High','2012-05-25',88,NULL),(41,1000018,'HS Diploma','McDonald\'s High','2012-05-25',78,NULL),(42,1000019,'HS Diploma','McDonald\'s High','2012-05-25',79,NULL),(43,1000020,'HS Diploma','McDonald\'s High','2012-05-25',70,NULL),(44,1000021,'HS Diploma','McDonald\'s High','2012-05-25',65,NULL),(45,1000022,'HS Diploma','McDonald\'s High','2012-05-25',65,NULL),(46,1000026,'HS Diploma','McDonald\'s High','2012-05-25',78,NULL),(47,1000030,'HS Diploma','McDonald\'s High','2012-05-25',88,NULL),(48,1000031,'HS Diploma','McDonald\'s High','2012-05-25',90,NULL),(49,1000032,'HS Diploma','McDonald\'s High','2012-05-25',92,NULL),(50,1000033,'HS Diploma','McDonald\'s High','2012-05-25',94,NULL);
+INSERT INTO `Degree` VALUES (1,1000006,'BA','Concordia University','2019-06-30',75),(2,1000007,'BSc','Concordia University','2018-12-30',83),(3,1000009,'BEd','Concordia University','2018-12-30',65),(4,1000023,'BComm','Concordia University','2019-06-30',72),(5,1000025,'BCompSc','Concordia University','2018-12-30',94),(6,1000026,'BEng','Concordia University','2018-12-30',98),(7,1000027,'BFA','Concordia University','2019-06-30',62),(8,1000028,'BCompSc','Concordia University','2018-12-30',60),(9,1000029,'BComm','Concordia University','2018-12-30',78),(10,1000058,'BFA','Concordia University','2019-06-30',86),(29,1000006,'DEC CST','Vanier College','2016-06-30',77),(30,1000007,'DEC BA','Vanier College','2016-06-30',85),(31,1000009,'DEC IE','Vanier College','2016-07-30',88),(32,1000023,'DEC AH','Vanier College','2016-06-20',89),(33,1000025,'DEC CST','Vanier College','2016-08-30',90),(34,1000011,'DEC IE','Vanier College','2016-03-30',63),(35,1000012,'DEC AT','Vanier College','2016-05-30',66),(36,1000013,'DEC CST','Vanier College','2016-06-30',88),(37,1000014,'DEC CST','Vanier College','2016-05-25',83),(38,1000015,'HS Diploma','McDonald\'s High','2012-05-25',80),(39,1000016,'HS Diploma','McDonald\'s High','2012-05-25',81),(40,1000017,'HS Diploma','McDonald\'s High','2012-05-25',88),(41,1000018,'HS Diploma','McDonald\'s High','2012-05-25',78),(42,1000019,'HS Diploma','McDonald\'s High','2012-05-25',79),(43,1000020,'HS Diploma','McDonald\'s High','2012-05-25',70),(44,1000021,'HS Diploma','McDonald\'s High','2012-05-25',65),(45,1000022,'HS Diploma','McDonald\'s High','2012-05-25',65),(46,1000026,'HS Diploma','McDonald\'s High','2012-05-25',78),(47,1000030,'HS Diploma','McDonald\'s High','2012-05-25',88),(48,1000031,'HS Diploma','McDonald\'s High','2012-05-25',90),(49,1000032,'HS Diploma','McDonald\'s High','2012-05-25',92),(50,1000033,'HS Diploma','McDonald\'s High','2012-05-25',94);
 /*!40000 ALTER TABLE `Degree` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -548,7 +547,7 @@ CREATE TABLE `Graduate` (
   CONSTRAINT `Degree_fk_1` FOREIGN KEY (`DegreeID`) REFERENCES `Degree` (`DegreeID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Graduate_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `Student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Publication_fk_1` FOREIGN KEY (`PublicationID`) REFERENCES `Publication` (`PublicationID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -619,7 +618,7 @@ CREATE TABLE `Instructor` (
   CONSTRAINT `Experience_ibfk_1` FOREIGN KEY (`ExperienceID`) REFERENCES `Experience` (`ExperienceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Publication_ibfk_1` FOREIGN KEY (`PublicationID`) REFERENCES `Building` (`BuildingID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Rooms_ibfk_9` FOREIGN KEY (`RoomsID`) REFERENCES `Rooms` (`RoomsID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10000002 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10000006 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -628,7 +627,7 @@ CREATE TABLE `Instructor` (
 
 LOCK TABLES `Instructor` WRITE;
 /*!40000 ALTER TABLE `Instructor` DISABLE KEYS */;
-INSERT INTO `Instructor` VALUES (1,444,1,9,1,'Thomas','Wimbleton','sdasdasdasd','1956-02-01','450-819-5557','twim@encs.concordia.ca','123 School Avenue','Yes'),(2,213,1,8,2,'Maria','Dumbledore','132 254 963','1991-03-17','450-556-5557','mdum@encs.concordia.ca','123 School Avenue','Yes'),(3,81,5,7,3,'John','Wickboss','093 192 302','1968-04-09','450-693-7775','jwick@encs.concordia.ca','167 Dorchester Avenue','No'),(4,102,4,4,4,'Dalia','Oneflo','222 232 212','1980-02-08','450-693-7775','done@encs.concordia.ca','167 Dorchester Avenue','Yes'),(5,205,2,3,5,'Mark','Electro','939 993 913','1990-01-19','514-499-5588','mele@encs.concordia.ca','167 Magnetto Lane','Yes'),(6,406,3,2,6,'Julia','Child','140 656 245','1982-10-21','450-145-5588','jchi@encs.concordia.ca','1155 Flower Av','Yes'),(7,407,2,1,7,'Pheobe','Buffet','204 204 205','1989-02-04','514-987-1234','pbuff@encs.concordia.ca','1155 Nestle Av','Yes'),(8,561,3,10,8,'Joey','White','787 234 231','1978-02-23','514-157-8462','jwhi@encs.concordia.ca','885 Accross Av','No'),(9,407,5,6,9,'Chandler','Bing','145 642 234','1957-12-24','514-166-1664','cbin@encs.concordia.ca','669 Laughmer Av','No'),(10,545,1,5,10,'Monica','Geller','120 002 192','1966-03-18','450-198-1978','mgel@encs.concordia.ca','669 Cleanec Av','Yes');
+INSERT INTO `Instructor` VALUES (1,444,1,9,1,'Thomas','Wimbleton','sdasdasdasd','1956-02-01','450-819-5557','twim@encs.concordia.ca','123 School Avenue','Yes'),(2,213,1,8,2,'Maria','Dumbledore','132 254 963','1991-03-17','450-556-5557','mdum@encs.concordia.ca','123 School Avenue','Yes'),(3,81,5,7,3,'John','Wickboss','093 192 302','1968-04-09','450-693-7775','jwick@encs.concordia.ca','167 Dorchester Avenue','No'),(4,102,4,4,4,'Dalia','Oneflo','222 232 212','1980-02-08','450-693-7775','done@encs.concordia.ca','167 Dorchester Avenue','Yes'),(5,205,2,3,5,'Mark','Electro','939 993 913','1990-01-19','514-499-5588','mele@encs.concordia.ca','167 Magnetto Lane','Yes'),(6,406,3,2,6,'Julia','Child','140 656 245','1982-10-21','450-145-5588','jchi@encs.concordia.ca','1155 Flower Av','Yes'),(7,407,2,1,7,'Pheobe','Buffet','204 204 205','1989-02-04','514-987-1234','pbuff@encs.concordia.ca','1155 Nestle Av','Yes'),(8,561,3,10,8,'Joey','White','787 234 231','1978-02-23','514-157-8462','jwhi@encs.concordia.ca','885 Accross Av','No'),(9,407,5,6,9,'Chandler','Bing','145 642 234','1957-12-24','514-166-1664','cbin@encs.concordia.ca','669 Laughmer Av','No'),(10,545,1,5,10,'Monica','Geller','120 002 192','1966-03-18','450-198-1978','mgel@encs.concordia.ca','669 Cleanec Av','Yes'),(10000005,NULL,NULL,NULL,NULL,'Neeham','Khalid','120 002 190','2019-08-07','5149655050','neehamk@gmail.com','6444 Rue Bonneville, ','No');
 /*!40000 ALTER TABLE `Instructor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -713,7 +712,7 @@ CREATE TABLE `Program` (
 
 LOCK TABLES `Program` WRITE;
 /*!40000 ALTER TABLE `Program` DISABLE KEYS */;
-INSERT INTO `Program` VALUES (7,4,'Computer Science'),(8,3,'Software Engineering'),(9,6,'Business'),(10,10,'Law and Order'),(11,4,'Computer Games'),(12,5,'Sports Psychology'),(13,1,'Applied Math'),(14,2,'Physics'),(15,3,'Mechanical Engineering'),(16,7,'Art'),(17,5,'Sociology'),(18,6,'Marketing'),(19,4,'ESports'),(20,6,'Entrepreneurship'),(21,6,'Economics'),(22,6,'Finance'),(23,3,'Aerospace'),(24,3,'Electrical'),(25,3,'Mechanical'),(26,4,'Cyber Security'),(27,4,'Syntax Checker');
+INSERT INTO `Program` VALUES (7,4,'Computer Science'),(8,3,'Software Engineering'),(9,6,'Business Technology Management'),(10,10,'Law and Order'),(11,4,'Computer Games'),(12,5,'Sports Psychology'),(13,1,'Applied Math'),(14,2,'Physics'),(15,3,'Mechanical Engineering'),(16,7,'Art'),(17,5,'Sociology'),(18,6,'Accounting'),(19,4,'ESports'),(20,6,'Entrepreneurship'),(21,6,'Economics'),(22,6,'Finance'),(23,3,'Aerospace'),(24,3,'Electrical'),(25,3,'Mechanical'),(26,4,'Cyber Security'),(27,4,'Debugger Analysis Manager');
 /*!40000 ALTER TABLE `Program` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -878,7 +877,7 @@ CREATE TABLE `Student` (
   `address` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`StudentID`),
   UNIQUE KEY `SSN_UNIQUE` (`SSN`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000059 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1000061 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1091,4 +1090,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-07  9:40:05
+-- Dump completed on 2019-08-07 11:44:23
