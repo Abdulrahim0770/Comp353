@@ -186,13 +186,14 @@ DROP TABLE IF EXISTS `Contract`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `Contract` (
   `ContractID` int(11) NOT NULL AUTO_INCREMENT,
+  `SectionID` int(11) DEFAULT NULL,
   `contractName` varchar(244) DEFAULT NULL,
   `contractStartDate` date DEFAULT NULL,
   `contractEndDate` date DEFAULT NULL,
   `contractPay` decimal(8,2) DEFAULT NULL,
-  `courseName` varchar(244) DEFAULT NULL,
-  `sectionName` varchar(244) DEFAULT NULL,
-  PRIMARY KEY (`ContractID`)
+  PRIMARY KEY (`ContractID`),
+  KEY `Contract_ibfk_1_idx` (`SectionID`),
+  CONSTRAINT `Contract_ibfk_1` FOREIGN KEY (`SectionID`) REFERENCES `Section` (`SectionID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -202,7 +203,7 @@ CREATE TABLE `Contract` (
 
 LOCK TABLES `Contract` WRITE;
 /*!40000 ALTER TABLE `Contract` DISABLE KEYS */;
-INSERT INTO `Contract` VALUES (1,'Marker','2018-08-09','2020-08-09',8000.00,'ART','201'),(2,'Tutorial','2019-02-05','2020-02-05',5000.00,'COMP','352'),(3,'Marker','2017-06-07','2019-06-07',4500.00,'COMP','222'),(4,'Marker','2019-01-01','2021-01-01',7000.00,'MARK','201'),(5,'Tutorial','2019-03-10','2019-10-10',2500.00,'COMP','353'),(6,'Marker','2018-04-04','2020-04-04',10000.00,'MATH','201'),(7,'Marker','2019-05-02','2020-05-02',6000.00,'MECH','332'),(8,'Tutorial','2018-08-12','2019-08-12',5500.00,'LAW','101'),(9,'Marker','2019-10-06','2020-10-06',7500.00,'COMP','391'),(10,'Tutorial','2019-01-07','2020-01-07',7500.00,'COMP','355'),(12,'Marker','2018-08-09','2020-08-09',8000.00,'ART','201'),(13,'Tutorial','2019-02-05','2020-02-05',5000.00,'COMP','352'),(14,'Marker','2017-06-07','2019-06-07',4500.00,'COMP','222'),(15,'Marker','2019-01-01','2021-01-01',7000.00,'MARK','201'),(16,'Tutorial','2019-03-10','2019-10-10',2500.00,'COMP','353'),(17,'Marker','2018-04-04','2020-04-04',10000.00,'MATH','201'),(18,'Marker','2018-04-04','2020-04-04',10000.00,'MATH','201'),(19,'Marker','2018-04-04','2020-04-04',10000.00,'MATH','201'),(20,'Tutorial','2019-01-07','2020-01-07',7500.00,'COMP','355'),(21,'Tutorial','2019-01-07','2020-01-07',7500.00,'COMP','355');
+INSERT INTO `Contract` VALUES (1,1,'Marker','2018-08-09','2020-08-09',8000.00),(2,2,'TA','2019-02-05','2020-02-05',5000.00),(3,3,'Marker','2017-06-07','2019-06-07',4500.00),(4,4,'TA','2019-01-01','2021-01-01',7000.00),(5,5,'TA','2019-03-10','2019-10-10',2500.00),(6,6,'Marker','2018-04-04','2020-04-04',10000.00),(7,7,'Marker','2019-05-02','2020-05-02',6000.00),(8,8,'TA','2018-08-12','2019-08-12',5500.00),(9,9,'Marker','2019-10-06','2020-10-06',7500.00),(10,10,'TA','2019-01-07','2020-01-07',7500.00),(12,11,'Marker','2018-08-09','2020-08-09',8000.00),(13,12,'TA','2019-02-05','2020-02-05',5000.00),(14,13,'Marker','2017-06-07','2019-06-07',4500.00),(15,14,'Marker','2019-01-01','2021-01-01',7000.00),(16,15,'TA','2019-03-10','2019-10-10',2500.00),(17,16,'TA','2018-04-04','2020-04-04',10000.00),(18,17,'Marker','2018-04-04','2020-04-04',10000.00),(19,18,'Marker','2018-04-04','2020-04-04',10000.00),(20,19,'TA','2019-01-07','2020-01-07',7500.00),(21,20,'TA','2019-01-07','2020-01-07',7500.00);
 /*!40000 ALTER TABLE `Contract` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,7 +424,7 @@ CREATE TABLE `Facilities` (
   PRIMARY KEY (`FacilitiesID`),
   KEY `RoomsID` (`RoomsID`),
   CONSTRAINT `Facilities_ibfk_1` FOREIGN KEY (`RoomsID`) REFERENCES `Rooms` (`RoomsID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,7 +433,7 @@ CREATE TABLE `Facilities` (
 
 LOCK TABLES `Facilities` WRITE;
 /*!40000 ALTER TABLE `Facilities` DISABLE KEYS */;
-INSERT INTO `Facilities` VALUES (1,44,'Projector, Speakers'),(2,79,'Computers'),(3,80,'Computers'),(4,81,'Computers'),(5,82,'Computers'),(6,83,'Computers'),(7,100,'Scanner'),(8,101,'Fax Machine'),(9,102,'Computers'),(10,103,'Speaker'),(11,104,'Printer'),(12,205,'Computers'),(13,207,'Computers'),(14,209,'Computers'),(15,213,'Computers'),(16,225,'Computers'),(17,403,'Projector'),(18,404,'Flashing Lights'),(19,405,'Computers'),(20,406,'Computers'),(21,407,'Computers');
+INSERT INTO `Facilities` VALUES (1,44,'Projector, Speakers'),(2,79,'Computers'),(3,80,'Computers'),(4,81,'Computers'),(5,82,'Computers'),(6,83,'Computers'),(7,100,'Scanner'),(8,101,'Fax Machine'),(9,102,'Computers'),(10,103,'Speaker'),(11,104,'Printer'),(12,205,'Computers'),(13,207,'Computers'),(14,209,'Computers'),(15,213,'Computers'),(16,225,'Computers'),(17,403,'Projector'),(18,404,'Flashing Lights'),(19,405,'Computers'),(20,406,'Computers'),(21,407,'Computers'),(22,10526,'Computers'),(23,10527,'Printer'),(24,10528,'Computers');
 /*!40000 ALTER TABLE `Facilities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -503,13 +504,11 @@ DROP TABLE IF EXISTS `Grade`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `Grade` (
   `GradeID` int(11) NOT NULL AUTO_INCREMENT,
-  `RegistrationID` int(11) DEFAULT NULL,
-  `gradeLetter` enum('A+','A','A-','B+','B','B-','C+','C','C-','D+','D','D-','F') DEFAULT NULL,
+  `GPA` decimal(3,2) NOT NULL,
+  `GradeLetter` enum('A+','A','A-','B+','B','B-','C+','C','C-','D+','D','D-','F','NR') DEFAULT NULL,
   `passOrFail` enum('Pass','Fail') DEFAULT NULL,
-  PRIMARY KEY (`GradeID`),
-  KEY `Grade_ibfk_1_idx` (`RegistrationID`),
-  CONSTRAINT `Grade_ibfk_1` FOREIGN KEY (`RegistrationID`) REFERENCES `Registration` (`RegistrationID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`GradeID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -518,7 +517,7 @@ CREATE TABLE `Grade` (
 
 LOCK TABLES `Grade` WRITE;
 /*!40000 ALTER TABLE `Grade` DISABLE KEYS */;
-INSERT INTO `Grade` VALUES (1,1,'A+','Pass'),(2,3,'A','Pass'),(3,4,'A-','Pass'),(4,6,'B','Pass'),(5,7,'B-','Pass'),(12,2,'B+','Pass'),(15,5,'D-','Pass');
+INSERT INTO `Grade` VALUES (1,4.30,'A+','Pass'),(2,4.00,'A','Pass'),(3,3.70,'A-','Pass'),(4,3.30,'B+','Pass'),(5,3.00,'B','Pass'),(6,2.70,'B-','Pass'),(7,2.30,'C+','Pass'),(8,2.00,'C','Pass'),(9,1.70,'C-','Pass'),(10,1.30,'D+','Pass'),(11,1.00,'D','Pass'),(12,0.70,'D-','Pass'),(13,0.00,'F','Fail'),(14,0.00,'NR',NULL);
 /*!40000 ALTER TABLE `Grade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -556,7 +555,7 @@ CREATE TABLE `Graduate` (
 
 LOCK TABLES `Graduate` WRITE;
 /*!40000 ALTER TABLE `Graduate` DISABLE KEYS */;
-INSERT INTO `Graduate` VALUES (6,1000006,NULL,1,2,12),(7,1000007,NULL,2,1,13),(9,1000009,NULL,1,3,14),(11,1000023,NULL,3,4,15),(13,1000025,NULL,5,6,17),(14,1000026,NULL,1,7,18),(15,1000027,NULL,3,10,19),(16,1000028,NULL,5,9,20),(17,1000029,NULL,2,8,21),(19,1000058,NULL,NULL,NULL,NULL);
+INSERT INTO `Graduate` VALUES (6,1000006,NULL,1,2,12),(7,1000007,NULL,2,1,13),(9,1000009,NULL,1,3,14),(11,1000023,NULL,3,4,15),(13,1000025,NULL,5,6,17),(14,1000026,NULL,1,7,18),(15,1000027,NULL,3,10,19),(16,1000028,NULL,5,9,20),(17,1000029,NULL,2,8,21);
 /*!40000 ALTER TABLE `Graduate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -752,12 +751,15 @@ CREATE TABLE `Registration` (
   `StudentID` int(11) DEFAULT NULL,
   `SectionID` int(11) DEFAULT NULL,
   `Date` date DEFAULT NULL,
+  `GradeID` int(11) DEFAULT NULL,
   PRIMARY KEY (`RegistrationID`),
   KEY `Registration_ibfk_1_idx` (`StudentID`),
   KEY `Registration_ibfk_3_idx` (`SectionID`),
+  KEY `Registration_ibfk_4_idx` (`GradeID`),
   CONSTRAINT `Registration_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `Student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Registration_ibfk_3` FOREIGN KEY (`SectionID`) REFERENCES `Section` (`SectionID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=latin1;
+  CONSTRAINT `Registration_ibfk_3` FOREIGN KEY (`SectionID`) REFERENCES `Section` (`SectionID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Registration_ibfk_4` FOREIGN KEY (`GradeID`) REFERENCES `Grade` (`GradeID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -766,7 +768,7 @@ CREATE TABLE `Registration` (
 
 LOCK TABLES `Registration` WRITE;
 /*!40000 ALTER TABLE `Registration` DISABLE KEYS */;
-INSERT INTO `Registration` VALUES (1,1000006,1,'2018-08-03'),(2,1000009,2,'2018-08-02'),(3,1000006,3,'2018-08-03'),(4,1000006,4,'2018-08-03'),(5,1000006,5,'2018-08-02'),(6,1000006,6,'2018-08-03'),(7,1000006,7,'2018-08-03'),(76,1000007,1,'2018-08-03'),(77,1000009,2,'2018-08-03'),(78,1000009,3,'2018-08-03'),(79,1000009,4,'2018-08-03'),(80,1000009,5,'2018-08-03'),(81,1000009,6,'2018-08-03'),(82,1000011,7,'2018-08-03'),(83,1000011,1,'2018-08-03'),(84,1000011,2,'2018-08-03'),(85,1000011,3,'2018-08-03'),(112,1000012,8,'2018-08-03'),(113,1000012,9,'2019-08-03'),(114,1000012,10,'2019-08-03'),(115,1000012,11,'2019-08-03'),(116,1000013,12,'2019-08-03'),(117,1000013,8,'2018-08-03'),(118,1000013,9,'2019-08-03'),(119,1000013,10,'2019-08-03'),(120,1000014,11,'2019-08-03'),(121,1000014,12,'2019-08-03'),(122,1000014,8,'2018-08-03'),(123,1000014,9,'2019-08-03'),(124,1000014,10,'2019-08-03'),(125,1000014,19,'2019-08-03'),(126,1000015,20,'2019-08-03'),(127,1000015,21,'2018-08-03'),(128,1000015,22,'2019-08-03'),(129,1000016,23,'2019-08-03'),(130,1000016,11,'2019-08-03'),(131,1000017,12,'2019-08-03'),(132,1000017,13,'2018-08-03'),(133,1000017,14,'2019-08-03'),(134,1000018,15,'2019-08-03'),(135,1000018,16,'2019-08-03'),(136,1000018,17,'2019-08-03'),(137,1000018,18,'2018-08-03'),(138,1000019,39,'2018-08-03'),(139,1000019,40,'2018-08-03'),(140,1000019,41,'2018-08-03'),(141,1000020,42,'2018-08-03'),(142,1000021,43,'2018-08-03'),(143,1000021,39,'2018-08-03');
+INSERT INTO `Registration` VALUES (4,1000006,4,'2018-08-03',4),(5,1000006,5,'2018-08-02',5),(6,1000006,6,'2018-08-03',6),(7,1000006,7,'2018-08-03',5),(76,1000007,1,'2018-08-03',4),(77,1000009,2,'2018-08-03',3),(78,1000009,3,'2018-08-03',2),(79,1000009,4,'2018-08-03',4),(80,1000009,5,'2018-08-03',5),(81,1000009,6,'2018-08-03',6),(82,1000011,7,'2018-08-03',7),(83,1000011,1,'2018-08-03',8),(84,1000011,2,'2018-08-03',6),(85,1000011,3,'2018-08-03',4),(112,1000012,8,'2018-08-03',3),(113,1000012,9,'2019-08-03',2),(114,1000012,10,'2019-08-03',4),(115,1000012,11,'2019-08-03',5),(116,1000013,12,'2019-08-03',6),(117,1000013,8,'2018-08-03',7),(118,1000013,9,'2019-08-03',2),(119,1000013,10,'2019-08-03',4),(120,1000014,11,'2019-08-03',5),(121,1000014,12,'2019-08-03',6),(122,1000014,8,'2018-08-03',7),(123,1000014,9,'2019-08-03',8),(124,1000014,10,'2019-08-03',2),(125,1000014,19,'2019-08-03',3),(126,1000015,20,'2019-08-03',4),(127,1000015,21,'2018-08-03',5),(128,1000015,22,'2019-08-03',6),(129,1000016,23,'2019-08-03',7),(130,1000016,11,'2019-08-03',8),(131,1000017,12,'2019-08-03',9),(132,1000017,13,'2018-08-03',3),(133,1000017,14,'2019-08-03',5),(134,1000018,15,'2019-08-03',6),(135,1000018,16,'2019-08-03',2),(136,1000018,17,'2019-08-03',2),(137,1000018,18,'2018-08-03',1),(138,1000019,39,'2018-08-03',1),(139,1000019,40,'2018-08-03',3),(140,1000019,41,'2018-08-03',1),(141,1000020,42,'2018-08-03',2),(142,1000021,43,'2018-08-03',4),(143,1000021,39,'2018-08-03',5),(226,1000006,39,'2019-08-07',14),(229,1000006,2,'2019-08-07',14),(231,1000006,65,'2019-08-07',14),(232,1000006,66,'2019-08-07',14),(233,1000007,67,'2019-08-07',14),(234,1000007,68,'2019-08-07',14),(235,1000007,69,'2019-08-07',14),(236,1000007,70,'2019-08-07',14),(237,1000006,71,'2019-08-07',14),(238,1000006,72,'2019-08-07',14),(239,1000006,73,'2019-08-07',14);
 /*!40000 ALTER TABLE `Registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -822,7 +824,7 @@ CREATE TABLE `Section` (
   CONSTRAINT `Section_ibfk_2` FOREIGN KEY (`RoomsID`) REFERENCES `Rooms` (`RoomsID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Section_ibfk_4` FOREIGN KEY (`TermID`) REFERENCES `Term` (`TermID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Section_ibfk_7` FOREIGN KEY (`CourseID`) REFERENCES `Course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -831,7 +833,7 @@ CREATE TABLE `Section` (
 
 LOCK TABLES `Section` WRITE;
 /*!40000 ALTER TABLE `Section` DISABLE KEYS */;
-INSERT INTO `Section` VALUES (1,44,2,2,1,1),(2,525,3,1,6,2),(3,205,4,2,2,3),(4,207,8,1,8,6),(5,1111,7,7,7,5),(6,209,5,2,9,7),(7,213,6,2,3,4),(8,209,2,1,15,1),(9,213,5,1,14,3),(10,205,6,1,16,5),(11,1111,7,1,17,6),(12,10526,1,7,1,1),(13,10527,2,8,2,2),(14,10528,3,9,3,3),(15,10529,4,10,4,4),(16,10530,5,11,5,5),(17,10531,6,12,6,6),(18,10532,7,8,7,1),(19,10533,1,9,8,2),(20,10534,2,10,9,3),(21,10535,3,11,11,4),(22,10536,4,12,12,5),(23,10537,6,11,13,7),(24,10538,1,2,18,3),(25,10539,3,2,19,5),(26,10540,5,2,20,7),(27,10541,3,2,10,4),(28,10543,2,2,21,5),(29,10542,1,2,22,6),(30,10547,2,1,6,1),(31,10544,5,1,6,3),(32,10545,6,1,6,5),(33,10546,7,1,6,6),(39,10547,1,1,23,1),(40,10548,2,1,24,2),(41,10549,3,1,25,3),(42,10550,4,1,26,4),(43,10551,5,1,27,5);
+INSERT INTO `Section` VALUES (1,44,2,2,1,1),(2,525,3,1,6,2),(3,205,4,2,2,3),(4,207,8,1,8,6),(5,1111,7,7,7,5),(6,209,5,2,9,7),(7,213,6,2,3,4),(8,209,2,1,15,1),(9,213,5,1,14,3),(10,205,6,1,16,5),(11,1111,7,1,17,6),(12,10526,1,7,1,1),(13,10527,2,8,2,2),(14,10528,3,9,3,3),(15,10529,4,10,4,4),(16,10530,5,11,5,5),(17,10531,6,12,6,6),(18,10532,7,8,7,1),(19,10533,1,9,8,2),(20,10534,2,10,9,3),(21,10535,3,11,11,4),(22,10536,4,12,12,5),(23,10537,6,11,13,7),(24,10538,1,2,18,3),(25,10539,3,2,19,5),(26,10540,5,2,20,7),(27,10541,3,2,10,4),(28,10543,2,2,21,5),(29,10542,1,2,22,6),(30,10547,2,1,6,1),(31,10544,5,1,6,3),(32,10545,6,1,6,5),(33,10546,7,1,6,6),(39,10547,1,1,23,1),(40,10548,2,1,24,2),(41,10549,3,1,25,3),(42,10550,4,1,26,4),(43,10551,5,1,27,5),(64,10552,1,5,1,1),(65,10553,2,5,5,2),(66,10554,3,5,7,3),(67,10555,4,5,3,4),(68,10556,5,5,23,5),(69,10557,6,5,25,6),(70,10558,7,5,27,7),(71,10562,8,5,24,8),(72,10560,9,5,20,3),(73,10561,10,5,4,2);
 /*!40000 ALTER TABLE `Section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -888,61 +890,6 @@ LOCK TABLES `Student` WRITE;
 /*!40000 ALTER TABLE `Student` DISABLE KEYS */;
 INSERT INTO `Student` VALUES (1000006,'James','Bond','789 456 123','2019-08-01','514-333-9999','jaketitle@gmail.com','15 Dragon Streets'),(1000007,'Dirk','Gently','789 456 129','1998-05-22','514-200-5322','dirkgently@gmail.com','100 Victoria Street'),(1000009,'Tevonn','Walker','987 159 321','1998-07-06','514-111-1124','twalker@gmail.com','734 Jasmine Street'),(1000011,'Tom','Goodman','738 072 784','1994-12-02','450-666-7896','goodmanflies@gmail.com','833 Dragon Ave'),(1000012,'Jonathan','Willis','576 656 805','1992-06-09','450-357-9510','jwill5@gmail.com','52-12 Romand Avenue'),(1000013,'Michael','Scott','613 561 539','1997-02-22','514-112-7536','Dundermifflin@email.com','115 Office Avenue'),(1000014,'Phyllis','Williams','737 480 426','1994-12-02','514-654-3214','cuteywill@gmail.com','1125 Office Avenue'),(1000015,'Scott','Wetland','335 200 119','1995-10-31','514-654-3217','watlandamiright@gmail.com','963 Wattka st'),(1000016,'Manilla','Louzon','779 821 214','1996-04-16','438-626-1234','manillathebest@gmail.com','1156 Hollywood Av'),(1000017,'Electra','Goodwill','268 023 702','1999-06-04','514-467-5556','elec75@msn.com','139 Brookhill Street'),(1000018,'Mario','Plumberman','775 863 087','1999-06-15','438-115-3339','drmario@hotmail.com','111 Mushroomking Ave'),(1000019,'Luigi','Plumberman','605 093 160','1992-10-06','438-119-4445','luigidabest@gmail.com','121 Mushroomking Ave'),(1000020,'Ash','Ketchum','201 977 295','1993-01-04','514-987-6543','pikapika1@gmail.com','665 Pallet Ave'),(1000021,'Gary','Blue','446 004 061','1993-03-27','514-334-3344','ratawata@yahoo.com','676 Pallet Ave'),(1000022,'Britney','Whitemen','736 499 229','1990-08-10','514-555-1475','foreveryoung@msn.com','558 Wallet St'),(1000023,'Suzanne','Baker','501 114 649','1989-04-20','450-726-4747','mjorplf9r7@thrubay.com','373  rue des Eglises Est'),(1000025,'Leonard','Johnson','327 998 209','1996-02-17','514-376-8344','6r239febnn6@iffymedia.com','6817 43 Av'),(1000026,'Derrick','Penman','006 541 312','1997-12-17','514-970-8739','eixx4c5blv@fakemailgenerator.net','2896  rue Levy'),(1000027,'Betsys','Troy','443 774 179','1993-11-25','519-885-3625','735cjwms0ov@thrubay.com','3617  Albert Street'),(1000028,'Christine','Jones','734 415 987','1996-07-16','807-353-3592','b10uxrmzhse@iffymedia.com','1070  Nelson Street'),(1000029,'Frank','Pitts','271 892 028','1990-05-19','604-992-4191','u3kz1uzwkpe@payspun.com','1598  Robson St'),(1000030,'Stephen','Buchanan','525 709 747','1990-11-14','250-647-2592','ldkjyfm4bqi@claimab.com','4546  Ganges Road'),(1000031,'Marilyn','Henderson','043 906 130','1992-01-08','416-471-7720','d5tdy9dwnjw@fakemailgenerator.net','3825  Yonge Street'),(1000032,'Scott','Jarboe','127 664 274','1993-11-17','604-268-4317','mvp3bx96uya@iffymedia.com','1521  Hammarskjold Dr'),(1000033,'Donald','Cruz','005 149 828','1995-09-03','403-749-9054','aonxg16s00d@thrubay.com','4079  Port Washington Road'),(1000034,'Roger','White','716 735 402','1990-04-20','519-245-1310','sgayjpm78bk@fakemailgenerator.net','1414  Scotchmere Dr'),(1000035,'Chantel','Mueller','727 519 861','1994-05-08','416-764-9643','mzr64xpuy3h@fakemailgenerator.net','1384  Queen Elizabeth Boulevard'),(1000036,'Charles','Hirano','726 519 861','1998-03-10','613-761-4344','cv36ry3zylt@fakemailgenerator.net','686  Carling Avenue'),(1000037,'Teddy','Kan','270 972 094','1995-09-30','416-861-5829','zvfwg8dw4ar@payspun.com','289  Adelaide St'),(1000039,'John','Stanley','710 202 219','1991-04-24','604-341-0581','z54sn8pjsy@claimab.com','4907  James Street'),(1000040,'Phyllis','Thrailkill','580 316 719','1991-10-25','519-350-9777','rmietznxkyl@claimab.com','502  Scotchmere Dr'),(1000041,'Gisela','Carmichael','332 220 987','1999-03-30','905-238-6366','tyotqfb4jgg@thrubay.com','2568  Wellington Street'),(1000042,'Monica','Knight','090 975 947','1992-10-21','613-797-9273','laxth66twb@fakemailgenerator.net','2255  Carling Avenue'),(1000045,'Dj','Khalid','159 054 055','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000046,'Dj','Khalid','119 473 486','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000047,'Dj','Khalid','233 881 259','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000048,'Dj','Khalid','011 780 764','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000049,'Dj','Khalid','595 698 150','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000050,'Dj','Khalid','005 192 117','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000051,'Dj','Khalid','085 143 659','1992-01-06','514-432-4324','neeham@gmail.com','432 maisonneuve'),(1000055,'Nicholas','Bergeron','058 318 247','1993-06-11','514-123-4567','nicho@gmail.com','Avenue Essential'),(1000057,'Jameson','Bond','555 123 456','1988-08-01','5145551489','mrbond@gmail.com','1715 Dragon Street'),(1000058,'Thuyohn','Thurai','123 546 789 ','1993-09-05','514-989-3232','thuyohn@gmail.com','456 maisonneuve');
 /*!40000 ALTER TABLE `Student` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Subsection`
---
-
-DROP TABLE IF EXISTS `Subsection`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Subsection` (
-  `SubsectionID` int(11) NOT NULL AUTO_INCREMENT,
-  `SectionID` int(11) DEFAULT NULL,
-  `GraduateID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`SubsectionID`),
-  KEY `Subsection_ibfk_2_idx` (`GraduateID`),
-  KEY `Subsection_ibfk_3` (`SectionID`),
-  CONSTRAINT `Subsection_ibfk_2` FOREIGN KEY (`GraduateID`) REFERENCES `Graduate` (`GraduateID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Subsection_ibfk_3` FOREIGN KEY (`SectionID`) REFERENCES `Section` (`SectionID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Subsection`
---
-
-LOCK TABLES `Subsection` WRITE;
-/*!40000 ALTER TABLE `Subsection` DISABLE KEYS */;
-INSERT INTO `Subsection` VALUES (2,5,11);
-/*!40000 ALTER TABLE `Subsection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `SubsectionType`
---
-
-DROP TABLE IF EXISTS `SubsectionType`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `SubsectionType` (
-  `SubsectionTypeID` int(11) NOT NULL AUTO_INCREMENT,
-  `SubsectionID` int(11) DEFAULT NULL,
-  `type` enum('Tutorial','Lab','Marking') DEFAULT NULL,
-  PRIMARY KEY (`SubsectionTypeID`),
-  KEY `SubsectionType_ibfk_1_idx` (`SubsectionID`),
-  CONSTRAINT `SubsectionType_ibfk_1` FOREIGN KEY (`SubsectionID`) REFERENCES `Subsection` (`SubsectionID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `SubsectionType`
---
-
-LOCK TABLES `SubsectionType` WRITE;
-/*!40000 ALTER TABLE `SubsectionType` DISABLE KEYS */;
-/*!40000 ALTER TABLE `SubsectionType` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1090,4 +1037,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-07 11:44:23
+-- Dump completed on 2019-08-07 16:47:20
