@@ -1591,41 +1591,38 @@
    }
 
    //********** Register student in a course **********//
-   if(isset($_POST['GIMMEABUTTON'])) {
-     $STH = $conn->query("SELECT SessionID, session FROM Session");
-     $STHTWO = $conn->query("SELECT DISTINCT year FROM Term");
+   if(isset($_POST['registerStudentCourse'])) {
+
+     $STH = $conn->query("SELECT DISTINCT SectionID, name
+                          FROM Section s, Course c , Term t
+                          WHERE s.CourseID = c.CourseID
+                          AND t.TermID = s.TermID
+                          AND t.SessionID = 1
+                          AND t.year = 2018");
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title">UPDATE THIS TITLE!</h5>
+               <h5 class="modal-title">Select a course</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
                </button>
             </div>
             <div class="modal-body">
                <form  method="post">
-                  <label for="sel1">Choose a Session</label>
-                  <select class="form-control" name="sendingSessionID">
+                  <label for="sel1">Choose a Course</label>
+                  <select class="form-control" name="sendingSectionID">
 <?php
                      while($row = $STH->fetch()) {
-                       echo "<option name='display' value='".$row['SessionID']."'>".$row['session']."</option>";
-                     }
-?>
-                  </select>
-                  <label for="sel1"><br>Choose a Year</label>
-                  <select class="form-control" name="sendingYear">
-<?php
-                     while($row = $STHTWO->fetch()) {
-                       echo "<option name='display' value='".$row['year']."'>".$row['year']."</option>";
+                       echo "<option name='display' value='".$row['SectionID']."'>".$row['name']."</option>";
                      }
 ?>
                   </select>
                   <div class="md-form mb-1">
-                     <label for="sel1"><br>Enter Student ID</label>
-                     <input name="sendingUserID" type="text" class="form-control" required>
+                     <label for="sel1" ><br>Enter Student ID</label>
+                     <input maxlength="7" name="sendingUserID" type="text" class="form-control" required>
                   </div>
                   <div class="modal-footer">
                      <button type="submit" class="btn btn-primary" name="ButtonFourteen">Submit</button>
@@ -1645,66 +1642,42 @@
    }
 
    if(isset($_POST['ButtonFourteen'])) {
-   $STH = $conn->query("SELECT c.name AS 'Course Taken'
-                        FROM Course c, Student s, Registration r, Section sc, Term t, Session ses
-                        WHERE t.SessionID = ses.SessionID AND s.StudentID = r.StudentID AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND t.TermID = sc.TermID AND s.StudentID = '".$_POST['sendingUserID']."'
-                        AND t.year = '".$_POST['sendingYear']."' AND ses.sessionID = '".$_POST['sendingSessionID']."'");
-   $result = 0;
-?>
-<div class="panel-body">
-   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title">UPDATE THIS TITLE!</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body">
-<?php
-                  echo '<table class="table table-bordered  table-striped table-hover text-center">';
-                  $i = 0;
-                  while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
-                    $result = 1;
-                      if ($i == 0) {
-                        $i++;
-                        echo "<tr>";
-                        foreach ($row as $key => $value) {
-                          echo "<th>" . $key . "</th>";
-                        }
-                        echo "</tr>";
-                      }
-                      echo "<tr>";
-                      foreach ($row as $value) {
-                        echo "<td>" . $value . "</td>";
-                      }
-                    echo "</tr>";
-                  }
-                  echo "</table>";
-                  if($result == 0)
-                    echo "No Result Found";
-?>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-<script>
-   $(function() {
-     $("#myModal").modal();
-   });
-</script>
-<?php
+       $STHOne = $conn->prepare("SELECT COUNT(StudentID) as 'count', SectionID FROM Registration WHERE StudentID = '".$_POST['sendingUserID']."' AND SectionID = '".$_POST['sendingSectionID']."'");
+       $STHOne->execute();
+       $rows = $STHOne->fetch();
+      if ($rows['count'] > 0) {
+        echo '
+        <div class="alert alert-danger text-center" role="alert">Sorry! The student is already registered for this course.</div>
+        ';
+      }
+        else {
+          try {
+       $STH = $conn->prepare("INSERT INTO Registration (StudentID, SectionID, Date, GradeID)
+                             SELECT DISTINCT ?, ? , CURDATE(), 14
+                             FROM Registration
+                             WHERE NOT EXISTS(SELECT DISTINCT SectionID, StudentID
+                             FROM Registration WHERE SectionID = ? AND StudentID = ?)");
+      $STH->bindParam(1, $_POST['sendingUserID']);
+      $STH->bindParam(2, $_POST['sendingSectionID']);
+      $STH->bindParam(3, $_POST['sendingSectionID']);
+      $STH->bindParam(4, $_POST['sendingUserID']);
+      $STH->execute();
+      echo '
+      <div class="alert alert-success text-center" role="alert">Congrats! The student is registered in the course.</div>
+      ';
+    } catch (Exception $e) {
+       echo '
+       <div class="alert alert-danger text-center" role="alert">Error! '.$e->getMessage().'</div>
+       ';
+     }
+   }
    }
 
    //********** Drop a course for a student **********//
    if(isset($_POST['GIMMEABUTTON'])) {
      $STH = $conn->query("SELECT SessionID, session FROM Session");
      $STHTWO = $conn->query("SELECT DISTINCT year FROM Term");
+
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

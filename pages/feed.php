@@ -62,8 +62,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from
                  <button class="btn btn-lg btn-secondary btn-block" name="listCourseDepartChairman">Total Number of Course Offered Per Department and its Chairman</button>
                  <button class="btn btn-lg btn-success btn-block" name="totalStudentProgram">Total number of students in each program</button>
                  <button class="btn btn-lg btn-danger btn-block" name="listCourseStudentTerm">List of courses given student and term</button>
-                 <button class="btn btn-lg btn-warning btn-block" disabled>Register student in a course - Confused!</button>
-                 ^-- Need Explanation (Team Help)
+                 <button class="btn btn-lg btn-warning btn-block" name="registerStudentCourse">Register student in a course</button>
                  <button class="btn btn-lg btn-info btn-block" disabled>Drop a course for a student - Confused!</button>
                  ^-- Need Explanation (Team Help)
                  <button class="btn btn-lg btn-dark btn-block" name="detailStudent">Detail report given a student</button>
