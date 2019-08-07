@@ -10,7 +10,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
         <?php
                  if(isset($_POST['saveEdit'])) { //Editing a Student
                    try {
-                   $STH = $conn->prepare("UPDATE Instructor SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE InstructorID=?");
+                   $STH = $conn->prepare("UPDATE Instructor SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=?, hasFunding=? WHERE InstructorID=?");
                    $STH->bindParam(1, $_POST['firstName']);
                    $STH->bindParam(2, $_POST['lastName']);
                    $STH->bindParam(3, $_POST['SSN']);
@@ -18,7 +18,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    $STH->bindParam(5, $_POST['address']);
                    $STH->bindParam(6, $_POST['email']);
                    $STH->bindParam(7, $_POST['phone']);
-                   $STH->bindParam(8, $_POST['id']);
+                   $STH->bindParam(8, $_POST['sendingFundingOption']);
+                   $STH->bindParam(9, $_POST['id']);
                    $STH->execute();
                  }
                  catch (Exception $e) {
@@ -33,7 +34,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                  }
                  if(isset($_POST['add'])) { //Insert a Student
                    try {
-                   $STH = $conn->prepare("INSERT INTO Instructor (firstName, lastName, dob, address, phone, email, SSN) Values (?,?,?,?,?,?,?)");
+                   $STH = $conn->prepare("INSERT INTO Instructor (firstName, lastName, dob, address, phone, email, SSN, hasFunding) Values (?,?,?,?,?,?,?,?)");
                    $STH->bindParam(1, $_POST['firstName']);
                    $STH->bindParam(2, $_POST['lastName']);
                    $STH->bindParam(3, $_POST['dob']);
@@ -41,6 +42,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                    $STH->bindParam(5, $_POST['phone']);
                    $STH->bindParam(6, $_POST['email']);
                    $STH->bindParam(7, $_POST['SSN']);
+                   $STH->bindParam(8, $_POST['sendingFundingOption']);
                    $STH->execute();
                  }
                  catch (Exception $e) {
@@ -63,7 +65,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                </br></br>
                <div class="row">
                 <div class="col-md-4 mid">
-                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNewInstructor">Add a new Faculty</button>
+                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNewInstructor">Add a new Faculty Member</button>
                 </div>
                 <div class="col-md-4 mid">
                    <a class="btn btn-info disabled" href="https://crc353.encs.concordia.ca/assets/print.php?table=Instructor">Print - Not a Priority</a>
@@ -83,7 +85,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                 </div>
               </div>
              </div></br>
-             <h3 align="center">Faculty Informations</h3>
+             <h3 align="center">Faculty Member Informations</h3>
              <div class="container-fluid content">
                <div class="row">
                 <div class="content">
@@ -112,6 +114,19 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                                        formGroup("fa-map-marked-alt", "address", "Address", "text", $row["address"]);
                                        formGroup("fa-phone prefix", "phone", "Phone", "text", $row["phone"]);
                                        formGroup("fa-envelope", "email", "Email", "email", $row["email"]);
+                                       if($row["hasFunding"] == "Yes")
+                                          $options = "<option name='display' value='Yes'>Yes</option> <option name='display' value='No'>No</option>";
+                                       else
+                                          $options = "<option name='display' value='No'>No</option> <option name='display' value='Yes'>Yes</option>";
+                                       echo '
+                                       <div class="md-form mb-1">
+                                          <i class="fas fa-envelope prefix grey-text"></i>
+                                          <label for="hasFunding">Funding</label>
+                                          <select class="form-control" name="sendingFundingOption">
+                                           '.$options.'
+                                           </select>
+                                       </div>
+                                       ';
              ?>
                                 </div>
                                 <div class="modal-footer">
@@ -195,6 +210,16 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                               formGroup("fa-map-marked-alt", "address", "Address", "text", "");
                               formGroup("fa-phone prefix", "phone", "Phone", "text", "");
                               formGroup("fa-envelope", "email", "Email", "email", "");
+                              echo '
+                              <div class="md-form mb-1">
+                                 <i class="fas fa-envelope prefix grey-text"></i>
+                                 <label for="hasFunding">Funding</label>
+                                 <select class="form-control" name="sendingFundingOption">
+                                  <option name="display" value="Yes">Yes</option>
+                                  <option name="display" value="No">No</option>
+                                  </select>
+                              </div>
+                              ';
              ?>
                          </div>
                          <div class="modal-footer">
