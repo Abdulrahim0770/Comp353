@@ -7,6 +7,7 @@
    <body id="lightOrangeBg">
 <?php
          if(isset($_POST['saveEdit'])) { //Editing a Student
+           try {
            $STH = $conn->prepare("UPDATE Student SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE StudentID=?");
            $STH->bindParam(1, $_POST['firstName']);
            $STH->bindParam(2, $_POST['lastName']);
@@ -18,11 +19,18 @@
            $STH->bindParam(8, $_POST['id']);
            $STH->execute();
          }
+         catch (Exception $e) {
+           echo '
+           <div class="alert alert-danger text-center" role="alert">Error! '.$e->getMessage().'</div>
+           ';
+         }
+       }
          if(isset($_POST['delete'])) { //Delete a Student
            $STH = $conn->prepare("DELETE FROM Student WHERE StudentID=$_POST[id]");
            $STH->execute();
          }
          if(isset($_POST['add'])) { //Insert a Student
+           try {
            $STH = $conn->prepare("INSERT INTO Student (firstName, lastName, dob, address, phone, email, SSN) Values (?,?,?,?,?,?,?)");
            $STH->bindParam(1, $_POST['firstName']);
            $STH->bindParam(2, $_POST['lastName']);
@@ -32,6 +40,12 @@
            $STH->bindParam(6, $_POST['email']);
            $STH->bindParam(7, $_POST['SSN']);
            $STH->execute();
+         }
+         catch (Exception $e) {
+           echo '
+           <div class="alert alert-danger text-center" role="alert">Error! '.$e->getMessage().'</div>
+           ';
+         }
          }
 ?>
       <html>
