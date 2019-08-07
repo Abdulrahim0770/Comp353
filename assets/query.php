@@ -1362,7 +1362,7 @@
 <?php
    }
 
-   //********** List of course offered by deparment and its chairman **********//
+   //********** Total Number of Course Offered Per Department and its Chairman **********//
    if(isset($_POST['listCourseDepartChairman'])){
    $STH = $conn->query("SELECT DISTINCT d.departmentName AS 'Department Name', COUNT(d.departmentName) AS 'Courses Offered', Concat(i.firstName,' ', i.lastName) AS 'Chairman'
                         FROM Department d, Course c, Chairman ch, Instructor i
@@ -1850,6 +1850,7 @@
    if(isset($_POST['ButtonSixteen'])) {
    $STH = $conn->query("SELECT StudentID, firstName, lastName, SSN, dob, phone, email, address FROM Student WHERE StudentID = '".$_POST['sendingUserID']."'");
                        $row = $STH->fetch();
+  $STHOne = $conn->query("SELECT degreeName FROM Degree WHERE StudentID = '".$_POST['sendingUserID']."'");
                        $STH = $conn->query("SELECT c.name AS 'Course Name', g.gradeLetter AS 'Grade'
                                             FROM Student s, Course c, Registration r, Section sc, Grade g
                                             WHERE s.StudentID = r.StudentID AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND g.RegistrationID = r.RegistrationID AND s.StudentID = '".$_POST['sendingUserID']."'");
@@ -1876,6 +1877,11 @@
                   echo "<b>Phone: </b>".$row['phone']."</br>";
                   echo "<b>Email: </b>".$row['email']."</br>";
                   echo "<b>Address: </b>".$row['address']."</br>";
+                  echo "<b>Academic History: </b>";
+                  while($rowOne = $STHOne->fetch(PDO::FETCH_ASSOC)) {
+                    echo $rowOne['degreeName'] . ", ";
+                  }
+                  echo "</br>";
                 }
                   echo '<table class="table table-bordered  table-striped table-hover text-center">';
                   $i = 0;
