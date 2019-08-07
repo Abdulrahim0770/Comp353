@@ -668,7 +668,7 @@
    }
 
    if(isset($_POST['ButtonSix'])) {
-   $STH = $conn->query("SELECT s.StudentID AS 'Student ID', s.firstName AS 'First Name', s.lastName AS 'Last Name', ses.session AS 'Session', t.year AS 'Year'
+   $STH = $conn->query("SELECT s.StudentID AS 'Student ID', s.firstName AS 'First Name', s.lastName AS 'Last Name'
           FROM Student s, EnrollsIN e, Term t, Session ses
           WHERE s.StudentID = e.StudentID AND e.TermID = t.TermID AND t.SessionID = ses.SessionID AND e.ProgramID = '".$_POST['sendingProgramID']."' AND ses.sessionID = '".$_POST['sendingSessionID']."' AND t.year = '".$_POST['sendingYear']."'
           ORDER BY s.StudentID ASC");
