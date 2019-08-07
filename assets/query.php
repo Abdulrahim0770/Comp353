@@ -1852,9 +1852,9 @@
    $STH = $conn->query("SELECT StudentID, firstName, lastName, SSN, dob, phone, email, address FROM Student WHERE StudentID = '".$_POST['sendingUserID']."'");
                        $row = $STH->fetch();
   $STHOne = $conn->query("SELECT degreeName FROM Degree WHERE StudentID = '".$_POST['sendingUserID']."'");
-                       $STH = $conn->query("SELECT c.name AS 'Course Name', g.gradeLetter AS 'Grade'
+                       $STH = $conn->query("SELECT c.name AS 'Course Name', g.GradeLetter AS 'Grade'
                                             FROM Student s, Course c, Registration r, Section sc, Grade g
-                                            WHERE s.StudentID = r.StudentID AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND g.RegistrationID = r.RegistrationID AND s.StudentID = '".$_POST['sendingUserID']."'");
+                                            WHERE s.StudentID = r.StudentID  AND r.SectionID = sc.SectionID AND sc.CourseID = c.CourseID AND r.GradeID = g.GradeID AND s.StudentID = '".$_POST['sendingUserID']."'");
    $result = 0;
 ?>
 <div class="panel-body">
