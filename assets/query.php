@@ -883,7 +883,7 @@
    }
 
    if(isset($_POST['ButtonEight'])) {
-     $STH = $conn->query("SELECT Concat(i.firstName,' ',i.lastName) AS 'Supervisor', d.departmentName AS 'Department'
+     $STH = $conn->query("SELECT DISTINCT Concat(i.firstName,' ',i.lastName) AS 'Supervisor', d.departmentName AS 'Department'
                           FROM ThesisGraduate tg, Instructor i, Student s, Department d
                           WHERE s.StudentID = tg.StudentID AND tg.InstructorID = i.InstructorID  AND i.InstructorID = d.InstructorID
                           AND d.DepartmentID = '".$_POST['sendingDepartmentID']."'");
