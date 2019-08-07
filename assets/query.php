@@ -238,9 +238,9 @@
             <div class="modal-body">
 <?php
                  if($row) {
-                  echo "Building Name: ".$row['BuildingName']."</br>";
-                  echo "Building Address: ".$row['BuildingAddress']."</br>";
-                  echo "Total Floor: ".$row['totalFloors']."</br>";
+                  echo "<b>Building Name: </b>".$row['BuildingName']."</br>";
+                  echo "<b>Building Address: </b>".$row['BuildingAddress']."</br>";
+                  echo "<b>Total Floor: </b>".$row['totalFloors']."</br>";
                 }
                   echo '<table class="table table-bordered  table-striped table-hover text-center">';
                   $i = 0;
