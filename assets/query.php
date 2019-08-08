@@ -549,14 +549,13 @@
 </script>
 <?php
    }
-
+//
    if(isset($_POST['ButtonFive'])) {
-   $STH = $conn->query("SELECT  c.name AS 'Course Name', CONCAT(BuildingName, '-', r.RoomsID) AS 'Room', CONCAT(c.name, '-' ,s.courseID, s.SectionID, s.TermID, '-' , t.SessionID) AS Section,
-                       Concat(time.weekDay,' ',time.startTime) AS 'Start Time', Concat(time.weekDay,' ',time.endTime) AS 'End Time', Concat(i.firstName, ' ',i.lastName) AS 'Professor', r.RoomCapacity AS 'Room Capacity', Count(reg.SectionID) AS 'Total Students Enrolled'
-                       FROM Term t, Section s, Course c, Department d, Program p, TimeSlot time, Rooms r, Instructor i, Registration reg, Building b
-                       WHERE p.DepartmentID = d.DepartmentID AND d.DepartmentID = c.DepartmentID AND c.CourseID = s.CourseID AND s.TermID = t.TermID AND s.TimeSlotID = time.TimeSlotID AND s.RoomsID = r.RoomsID  AND s.InstructorID = i.InstructorID AND s.SectionID = reg.SectionID
-                       AND d.departmentID = '".$_POST['sendingDepartmentID']."' AND t.year = '".$_POST['sendingYear']."' AND t.SessionID = '".$_POST['sendingSessionID']."'
-                       GROUP BY reg.SectionID");
+   $STH = $conn->query("SELECT c.name,  room.RoomNumber, ts.startTime, ts.endTime, i.firstName, i.lastName, room.roomCapacity, COUNT(*) AS 'Enrolled Students'
+                        FROM Registration r, Section s, Course c, Term t, TimeSlot ts, Department d, Instructor i, Rooms room
+                        WHERE r.SectionID = s.SectionID AND s.CourseID = c.CourseID AND c.DepartmentID = d.DepartmentID AND s.TermID = t.TermID AND s.TimeSlotID = ts.TimeSlotID AND s.InstructorID = i.InstructorID AND s.RoomsID = room.RoomsId AND
+                        d.DepartmentID = '".$_POST['sendingDepartmentID']."' AND  t.year = '".$_POST['sendingYear']."'  AND t.SessionID = '".$_POST['sendingSessionID']."'
+                        GROUP BY r.SectionID");
    $result = 0;
 ?>
 <div class="panel-body">
