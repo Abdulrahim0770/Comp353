@@ -34,7 +34,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Campus</h5>
@@ -88,7 +88,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Select a Campus</h5>
@@ -129,7 +129,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Building</h5>
@@ -183,7 +183,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Select a Building</h5>
@@ -228,7 +228,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Details of Building </h5>
@@ -287,7 +287,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Select a Department</h5>
@@ -384,7 +384,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please select your options</h5>
@@ -443,7 +443,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Course Offered</h5>
@@ -499,7 +499,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please select your options</h5>
@@ -549,18 +549,19 @@
 </script>
 <?php
    }
-//
+
    if(isset($_POST['ButtonFive'])) {
-   $STH = $conn->query("SELECT c.name,  room.RoomNumber, ts.startTime, ts.endTime, i.firstName, i.lastName, room.roomCapacity, COUNT(*) AS 'Enrolled Students'
-                        FROM Registration r, Section s, Course c, Term t, TimeSlot ts, Department d, Instructor i, Rooms room
+   $STH = $conn->query("SELECT c.name AS 'Course Name',  CONCAT(b.BuildingName, '-', room.RoomNumber) AS 'Room', CONCAT(c.name, '-' ,s.courseID, s.SectionID, s.TermID, '-' , t.SessionID) AS Section, Concat(ts.weekDay,' ',ts.startTime) AS 'Start Time',
+                        Concat(ts.weekDay,' ',ts.endTime) AS 'End Time', Concat(i.firstName, ' ',i.lastName) AS 'Professor', room.RoomCapacity AS 'Room Capacity', COUNT(*) AS 'Students Enrolled'
+                        FROM Registration r, Section s, Course c, Term t, TimeSlot ts, Department d, Instructor i, Rooms room, Building b
                         WHERE r.SectionID = s.SectionID AND s.CourseID = c.CourseID AND c.DepartmentID = d.DepartmentID AND s.TermID = t.TermID AND s.TimeSlotID = ts.TimeSlotID AND s.InstructorID = i.InstructorID AND s.RoomsID = room.RoomsId AND
-                        d.DepartmentID = '".$_POST['sendingDepartmentID']."' AND  t.year = '".$_POST['sendingYear']."'  AND t.SessionID = '".$_POST['sendingSessionID']."'
+                        room.BuildingID = b.BuildingID AND d.DepartmentID = '".$_POST['sendingDepartmentID']."' AND  t.year = '".$_POST['sendingYear']."'  AND t.SessionID = '".$_POST['sendingSessionID']."'
                         GROUP BY r.SectionID");
    $result = 0;
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Detail of Courses</h5>
@@ -616,7 +617,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please select your options</h5>
@@ -732,7 +733,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please select your options</h5>
@@ -792,7 +793,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Instructors</h5>
@@ -846,7 +847,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Select a Department</h5>
@@ -890,7 +891,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Supervisors</h5>
@@ -944,7 +945,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Select Department</h5>
@@ -988,7 +989,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Advisors</h5>
@@ -1042,7 +1043,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Select a Supervisor</h5>
@@ -1086,7 +1087,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Graduate Students</h5>
@@ -1142,7 +1143,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please select your options</h5>
@@ -1259,7 +1260,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please select your options</h5>
@@ -1432,7 +1433,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Students Enrolled In Each Program</h5>
@@ -1487,7 +1488,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please select your options and provide details</h5>
@@ -1543,7 +1544,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">List of Courses Taken</h5>
@@ -1602,7 +1603,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Select a course</h5>
@@ -1678,7 +1679,7 @@
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Provide Student ID</h5>
@@ -1714,7 +1715,7 @@ if(isset($_POST['ButtonFifteen'])) {
 ?>
 <div class="panel-body">
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
          <div class="modal-header">
             <h5 class="modal-title">Select a course</h5>
@@ -1759,7 +1760,7 @@ $("#myModal").modal();
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Please provide the Student ID</h5>
@@ -1801,7 +1802,7 @@ $("#myModal").modal();
 ?>
 <div class="panel-body">
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">Student Details</h5>
@@ -1824,7 +1825,7 @@ $("#myModal").modal();
                   while($rowOne = $STHOne->fetch(PDO::FETCH_ASSOC)) {
                     echo $rowOne['degreeName'] . ", ";
                   }
-                  echo "</br>";
+                  echo "</br></br>";
                 }
                   echo '<table class="table table-bordered  table-striped table-hover text-center">';
                   $i = 0;
