@@ -63,7 +63,9 @@
                <div class="col-md-4 mid">
                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNewStudent">Add a new Student</button>
                </div>
-               <div class="col-md-4 mid"></div>
+               <div class="col-md-4 mid">
+                  <span style="font-size:100px">&#128035;</span>
+               </div>
                <div class="col-md-4 mid">
                   <form style="display: inline;" method="post" class="form-inline">
                      <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Search By ID" aria-label="Search">

@@ -6,7 +6,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
 
 ?>
 <html lang="en">
-   <body id="faculty">
+   <body id="lightOrangeBg">
         <?php
                  if(isset($_POST['saveEdit'])) { //Editing a Student
                    $STH = $conn->prepare("UPDATE Student SET firstName=?, lastName=?, SSN=?, dob=?, address=?, email=?, phone=? WHERE StudentID=?");
@@ -55,7 +55,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //Getting the code fro
                 <div class="col-md-4 mid">
                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNewTA">Add a new TA</button>
                 </div>
-                <div class="col-md-4 mid"></div>
+                <div class="col-md-4 mid">
+                    <span style="font-size:100px">&#128037;</span>
+                </div>
                 <div class="col-md-4 mid">
                    <form style="display: inline;" method="post" class="form-inline">
                       <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Search By ID" aria-label="Search">
